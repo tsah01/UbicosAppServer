@@ -972,9 +972,16 @@ def getimageCommentCount(request):
     imageComment_count = imageComment.objects.values('posted_by_id').annotate(dcount=Count('posted_by_id'))
     print(imageComment_count)
 
-    imageComment_count = json.dumps(list(imageComment_count))
+    # list of unique users who posted in khan academy (not all users may post in khan academy)
+    userid_list = [user['posted_by_id'] for user in imageComment.objects.values('posted_by_id').distinct()]
 
-    return HttpResponse(imageComment_count)
+    imageComment_list = []
+    for userid in userid_list:
+        dict = {}
+        dict[userid] = [item['content'] for item in imageComment.objects.filter(posted_by_id=userid).values('content')]
+        imageComment_list.append(dict)
+
+    return HttpResponse(imageComment_list)
 
 def getkhanAcademyCount(request):
     khanacademy_count = khanAcademyAnswer.objects.values('posted_by_id').annotate(dcount=Count('posted_by_id'))
