@@ -56,6 +56,7 @@ urlpatterns = [
     url('perUserDataExtract',views.perUserDataExtract),
     url('getBadgeCount',views.getBadgeCount),
     url('getimageCommentCount',views.getimageCommentCount),
+    url('getGeneralChatMsg',views.getGeneralChatMsg),
     url('getkhanAcademyCount',views.getkhanAcademyCount),
     #teacherdashboard
     url('getGalleryTableTD/(?P<act_id>\d+)',views.getGalleryTableTD)

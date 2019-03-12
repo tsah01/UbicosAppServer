@@ -968,6 +968,16 @@ def perUserDataExtract(request):
 
     #return HttpResponse('')
 
+def getGeneralChatMsg(request):
+    userid_list = [user['posted_by_id'] for user in Message.objects.values('posted_by_id').distinct()]
+    generalChatComment_list = []
+    for userid in userid_list:
+        dict = {}
+        dict[userid] = [item['content'] for item in Message.objects.filter(posted_by_id=userid).values('content')]
+        generalChatComment_list.append(dict)
+
+    return HttpResponse(generalChatComment_list)
+
 def getimageCommentCount(request):
     imageComment_count = imageComment.objects.values('posted_by_id').annotate(dcount=Count('posted_by_id'))
     print(imageComment_count)
