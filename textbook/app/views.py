@@ -978,9 +978,18 @@ def getimageCommentCount(request):
 
 def getkhanAcademyCount(request):
     khanacademy_count = khanAcademyAnswer.objects.values('posted_by_id').annotate(dcount=Count('posted_by_id'))
-    print(khanacademy_count)
+    #print(khanacademy_count)
 
-    return HttpResponse(khanacademy_count)
+    # list of unique users who posted in khan academy (not all users may post in khan academy)
+    userid_list = [user['posted_by_id'] for user in khanAcademyAnswer.objects.values('posted_by_id').distinct()]
+
+    kaResponse_list = []
+    for userid in userid_list:
+        dict = {}
+        dict[userid] = [{'type':item['response_type'], 'response':item['response']} for item in khanAcademyAnswer.objects.filter(posted_by_id=userid).values('response_type', 'response')]
+        kaResponse_list.append(dict)
+
+    return HttpResponse(kaResponse_list)
 
 def getBadgeCount(request):
     #total count of badges each user recieved
