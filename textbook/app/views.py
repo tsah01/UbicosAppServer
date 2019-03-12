@@ -968,6 +968,39 @@ def perUserDataExtract(request):
 
     #return HttpResponse('')
 
+def getimageCommentCount(request):
+    imageComment_count = imageComment.objects.values('posted_by_id').annotate(dcount=Count('posted_by_id'))
+    print(imageComment_count)
+
+    imageComment_count = json.dumps(list(imageComment_count))
+
+    return HttpResponse(imageComment_count)
+
+def getkhanAcademyCount(request):
+    khanacademy_count = khanAcademyAnswer.objects.values('posted_by_id').annotate(dcount=Count('posted_by_id'))
+    print(khanacademy_count)
+
+    return HttpResponse(khanacademy_count)
+
+def getBadgeCount(request):
+    #total count of badges each user recieved
+    badge_count = badgeModel.objects.values('userid_id').annotate(dcount=Count('userid_id'));
+    #print(badge_count);
+
+    # identify different badges for each user
+    #list of unique users who received badge (not all users may not get badge)
+    userid_list = [user['userid_id'] for user in badgeModel.objects.values('userid_id').distinct()]
+    #print(userid_list)
+
+    # get  all of the badges for each user -- it will return dict in the format <userid:badgelist>
+    badge_list = []
+    for userid in userid_list:
+        badge_dict = {}
+        badge_dict[userid] = [item['badgeType'] for item in badgeModel.objects.filter(userid_id=userid).values('badgeType')]
+        badge_list.append(badge_dict)
+
+    #print(badge_list)
+    return HttpResponse(badge_list)
 
 def addUserToGroupsForm(request):
     return render(request, 'app/group.html', {})
