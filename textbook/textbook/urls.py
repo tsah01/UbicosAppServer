@@ -19,12 +19,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
+
+
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('app.urls'))
     #url('app/', include('app.urls')), #hit in the browser: http://127.0.0.1:8000/app/
-
-
 
 ]
 

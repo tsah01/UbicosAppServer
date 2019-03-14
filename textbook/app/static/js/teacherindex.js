@@ -1,11 +1,12 @@
 
-var users_list=['ant', 'giraffe', 'penguin', 'sheep', 'hippo', 'lion', 'dolphin', 'eagle', 'frog', 'duck', 'bee', 'bat', 'elephant', 'leopard', 'panda', 'fish', 'fox', 'alligator', 'kangaroo', 'liger', 'squirrel', 'zebra', 'bear', 'deer', 'dog', 'tiger', 'monkey', 'rabbit', 'AW', 'user1', 'user2']
+var users_list=['ant', 'giraffe', 'penguin', 'sheep', 'hippo', 'lion', 'dolphin', 'eagle', 'frog', 'duck', 'bee', 'bat', 'elephant', 'leopard', 'panda', 'fish', 'fox', 'alligator', 'kangaroo', 'liger', 'squirrel', 'zebra', 'bear', 'deer', 'dog', 'tiger', 'monkey', 'rabbit', 'raccoon', 'AW', 'user1', 'user2']
 var random_group_id
 $(function(){
 
 
     //loadtable();
     //loadGraph();
+    showUserList();
     detectTableClick();
 
     //https://stackoverflow.com/questions/21913283/how-to-catch-click-event-with-jquery-on-dynamically-created-button
@@ -39,6 +40,31 @@ $(function(){
 
 })
 
+var showUserList = function(){
+
+    //TODO: hide all other div except user list div
+     $('#teacher-user-list').show();
+     $('#single-user-view').hide();
+
+
+    //generate button for all the users
+    for(var i of users_list.sort()) {
+        //can use break;
+        //console.log(i); //note i returns value
+        var li = $("<li/>").appendTo('#teacher-user-list');
+        li.append('<a href="#" class="userprofile" data-username='+i+'> ' + i + '</a>'); //click detect handled in teacherindex.js
+    }
+
+    $('#teacher-user-list').off().on('click', '.userprofile', function(e){
+        //alert($(this).attr('data-username'));
+        $('#teacher-user-list').hide();
+        $('#single-user-view').show();
+
+    });
+
+
+}
+
 var getRandomListData = function(groupid){
     $.ajax({
             type:'GET',
@@ -55,48 +81,59 @@ var getRandomListData = function(groupid){
 
 }
 
+//called from digTextbook.js
+var initStage = function(){
 
+     //only show the user list -- hide rest of the divs
+     $('#teacher-user-list').show();
+     $('#single-user-view').hide();
+
+}
+//called from digTextbook.js
 var loadtable = function (activity_id){
 
-    var $tableBody = $('#tbody'); // use a Id selector here
-    var rowHTML = '';
-
-    //clear any previous rows
-    $('#tbody').empty();
-
-    dataFromServer = getGalleryInfo(activity_id); //ajax method call
-//    console.log(dataFromServer)
-//    console.log(dataFromServer.length)
-//    console.log(dataFromServer[0].comment_count.length)
-//    console.log(dataFromServer[1].comment_count.length)
 
 
-       //display first row
-       rowHTML = '';
-       rowHTML += '<td width=20%><a>Username</a></td>';
-       $.each(dataFromServer, function(key, value){
-            rowHTML += '<td width=30%><a>Image '+value.image_id+'</a></td>';
-       })
-       $tableBody.append('<tr>' + rowHTML + '</tr>');
 
-
-       //display the next rows
-       var current = 0
-       $.each(users_list, function(key,value){
-
-             rowHTML = '';
-             rowHTML += '<td width=30%><a class="tchr-uname" data-uname=' + users_list[current] + '>' + users_list[current] + '</a></td>';
-
-             $.each(dataFromServer, function(key,value){
-                //console.log(value.comment_count)
-                rowHTML += '<td width=30%><a data-index=' + value.image_id + '>' + value.comment_count[current] + '</a></td>';
-             })
-        $tableBody.append('<tr>' + rowHTML + '</tr>');
-        current++;
-
-    })
-
-     $('#teacher-gallery-table').append($tableBody);
+//    var $tableBody = $('#tbody'); // use a Id selector here
+//    var rowHTML = '';
+//
+//    //clear any previous rows
+//    $('#tbody').empty();
+//
+//    dataFromServer = getGalleryInfo(activity_id); //ajax method call
+////    console.log(dataFromServer)
+////    console.log(dataFromServer.length)
+////    console.log(dataFromServer[0].comment_count.length)
+////    console.log(dataFromServer[1].comment_count.length)
+//
+//
+//       //display first row
+//       rowHTML = '';
+//       rowHTML += '<td width=20%><a>Username</a></td>';
+//       $.each(dataFromServer, function(key, value){
+//            rowHTML += '<td width=30%><a>Image '+value.image_id+'</a></td>';
+//       })
+//       $tableBody.append('<tr>' + rowHTML + '</tr>');
+//
+//
+//       //display the next rows
+//       var current = 0
+//       $.each(users_list, function(key,value){
+//
+//             rowHTML = '';
+//             rowHTML += '<td width=30%><a class="tchr-uname" data-uname=' + users_list[current] + '>' + users_list[current] + '</a></td>';
+//
+//             $.each(dataFromServer, function(key,value){
+//                //console.log(value.comment_count)
+//                rowHTML += '<td width=30%><a data-index=' + value.image_id + '>' + value.comment_count[current] + '</a></td>';
+//             })
+//        $tableBody.append('<tr>' + rowHTML + '</tr>');
+//        current++;
+//
+//    })
+//
+//     $('#teacher-gallery-table').append($tableBody);
 
 
 }

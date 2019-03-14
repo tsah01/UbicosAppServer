@@ -275,7 +275,8 @@ var bindActivityButtons = function(){
             $('.card.active').removeClass('active');
             $('.card.teacher').addClass('active');
 
-            loadtable(activity_id);
+            initStage(); //defined in teacherindex.js
+            //loadtable(activity_id);   ////defined in teacherindex.js
             card_extension();
 
         })
