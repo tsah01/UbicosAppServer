@@ -984,10 +984,14 @@ function showPrompt(message, platform){
                 $('.prompt-card.prompt-ka').addClass('active');
                 $('#prompt-badge-img-ka').attr('src','/static/pics/'+index+'.png');
                 $('p#prompt-p-ka').text("You earned a " + badge_dict[index] + " badge!");
-            }else{
+            }else if(platform === 'gallery'){
                 $('.prompt-card.prompt').addClass('active');
                 $('#prompt-badge-img').attr('src','/static/pics/'+index+'.png');
                 $('p#prompt-p').text("You earned a " + badge_dict[index] + " badge!");
+            }else{
+                $('.prompt-card.prompt-gm').addClass('active');
+                $('#prompt-badge-img-gm').attr('src','/static/pics/'+index+'.png');
+                $('p#prompt-p-gm').text("You earned a " + badge_dict[index] + " badge!");
             }
 
              //insert the badge in the database

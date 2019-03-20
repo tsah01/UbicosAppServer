@@ -1,3 +1,4 @@
+{% load static %}
 
 <h1>General Chat</h1>
 
@@ -6,7 +7,15 @@
      <div id = "badge-description">Testing</div>
 </div>
 <ul id="activity-feed" class="feed">
-</ul> 
+</ul>
+
+   <div class="prompt-card prompt-gm">
+     <a class="prompt-close-card"></a>
+     <!--<span id="prompt-p"></span>-->
+     <!--<img id="badge-default" src="{% static 'pics/default.png' %}" alt="">-->
+     <img id="prompt-badge-img-gm" src="{% static 'pics/default.png' %}" alt="" >
+     <p id="prompt-p-gm" ></p>
+   </div>
 
 <div id="write-message" class="message-input">
      <input type="text" name="msg-text" id="msg-text" placeholder="Type a message to your class here">

@@ -1582,7 +1582,7 @@ a {
     background-color: #3d7ce2;
 }
 
-.prompt-ka {
+.prompt-ka, .prompt-gm {
     background-color: #2DB872;
 }
 
@@ -1591,10 +1591,10 @@ a {
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     box-shadow: 0 0 5px rgba(30, 192, 145,1);
-    position: absolute;
+    position: fixed;
     top: 0%;
     height: 10%;
-    width: 100%;
+    width: 50%;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     right: 0;
@@ -1616,14 +1616,14 @@ a {
     box-shadow: 4px 0 4px #3d7ce2;
 }
 
-.prompt-card.prompt-ka.active {
+.prompt-card.prompt-ka.active, .prompt-card.prompt-gm.active {
     transform: translateX(0);
     transition: all 0.4s;
     transition-timing-function: ease-out;
     box-shadow: 4px 0 4px #2DB872;
 }
 
-#prompt-p, #prompt-p-ka{
+#prompt-p, #prompt-p-ka, #prompt-p-gm{
 
     margin:0px;
     height:32px;
@@ -1647,7 +1647,7 @@ a {
     z-index: 2;
 }
 
-#prompt-badge-img, #prompt-badge-img-ka{
+#prompt-badge-img, #prompt-badge-img-ka, #prompt-badge-img-gm{
     width:32px;
     height:32px;
     float:left;

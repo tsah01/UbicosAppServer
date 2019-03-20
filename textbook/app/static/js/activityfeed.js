@@ -4,8 +4,6 @@ $(function(){
 
     loadActivityFeed();
 
-
-
 })
 
 
@@ -86,6 +84,8 @@ function postMessage(){
     inputEl.prop('disabled', true);
     var message = inputEl.val();
     console.log('user message :: '+message)
+
+    showPrompt(message, "gm");
 
         if(message == ""){
             console.log('empty input activity feed')
