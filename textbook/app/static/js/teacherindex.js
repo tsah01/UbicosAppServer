@@ -30,7 +30,7 @@ $(function(){
         $('#tchr-gallery').hide();
     });
 
-    $('#teacher-view').on('click', '.groupLink', function(e){
+    $('.teacher-view').on('click', '.groupLink', function(e){
             e.preventDefault();
             random_group_id = $(this).attr('data-random-group-id');
             getRandomListData(random_group_id); //defined down below
@@ -46,14 +46,21 @@ var showUserList = function(){
      $('#teacher-user-list').show();
      $('#single-user-view').hide();
 
-
     //generate button for all the users
     for(var i of users_list.sort()) {
         //can use break;
         //console.log(i); //note i returns value
-        var li = $("<li/>").appendTo('#teacher-user-list');
-        li.append('<a href="#" class="userprofile" data-username='+i+'> ' + i + '</a>'); //click detect handled in teacherindex.js
+//        var li = $("<li/>").appendTo('#teacher-user-list');
+//        li.append('<a href="#" class="userprofile" data-username='+i+'> ' + i + '</a>'); //click detect handled in teacherindex.js
+
+          var atag = $('<a href="#" class="userprofile" data-username='+i+'> ' + i + '</a>').appendTo('#teacher-user-list');
     }
+
+    //reverse order
+//    var list = $('#teacher-user-list');
+//    var listItems = list.children('a');
+//    list.empty();
+//    list.append(listItems.get().reverse());
 
     $('#teacher-user-list').off().on('click', '.userprofile', function(e){
         //alert($(this).attr('data-username'));
@@ -72,7 +79,7 @@ var getRandomListData = function(groupid){
             async: false, //wait for ajax call to finish
             success: function(e){
                 returnValue = e.success;
-                $('#teacher-view').hide();
+                $('.teacher-view').hide();
                 middleGroupDiscussion = 'yes';
                 showImageInGallery(returnValue); //defined in gallery.js
 
