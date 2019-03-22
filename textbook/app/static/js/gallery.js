@@ -885,14 +885,14 @@ var openImageView = function(galleryView, image){
 
 function populateTeacherViewDiv(list){
 
-    $('#teacher-view').empty();
+    $('.teacher-view').empty();
     $('#gallery-view-only').hide();
     $('#gallery-group-heading').text('Random Group Lists')
 
     for(var i of list) {
         //can use break;
         //console.log(i); //note i returns value
-        var li = $("<li/>").appendTo('#teacher-view');
+        var li = $("<li/>").appendTo('.teacher-view');
         li.append('<a href="#" class="groupLink" data-random-group-id='+i+'> Group ' + i + '</a>'); //click detect handled in teacherindex.js
     }
 
@@ -953,14 +953,6 @@ function showPrompt(message, platform){
     }else{
         if(lengthOfMsg < 7) return false;//character based
     }
-
-
-//    if(localStorage.getItem("msgCounter")){
-//        var counter = localStorage.getItem("msgCounter")
-//        localStorage.setItem("msgCounter", counter+1);
-//    }else{
-//        localStorage.setItem("msgCounter", 0)
-//    }
 
     message = message.toLowerCase();
 

@@ -1022,7 +1022,8 @@ def getBadgeCount(request):
     badge_list = []
     for userid in userid_list:
         badge_dict = {}
-        badge_dict[userid] = [item['badgeType'] for item in badgeModel.objects.filter(userid_id=userid).values('badgeType')]
+        user = User.objects.get(pk=userid).username
+        badge_dict[user] = [item['badgeType'] for item in badgeModel.objects.filter(userid_id=userid).values('badgeType')]
         badge_list.append(badge_dict)
 
     #print(badge_list)
