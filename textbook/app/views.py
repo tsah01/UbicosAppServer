@@ -993,6 +993,34 @@ def getimageCommentCount(request):
 
     return HttpResponse(imageComment_list)
 
+def getimageCommentDetails(request):
+    # sort out images by each gallery id
+    gallery_id = [gid['gallery_id'] for gid in imageModel.objects.values('gallery_id').distinct()];
+    gallery_id.sort(); #in place sort, next time the list will be sorted.
+    print(gallery_id);
+
+    list = [] #list of dictionary items
+    for gid in gallery_id:
+        dict={}
+        dict[gid] = [iid['id'] for iid in imageModel.objects.filter(gallery_id=gid).values('id')]
+        list.append(dict);
+
+    # print list of dictionary items in key/value pairs
+    # for item in list:
+    #     for k,v in item.items():
+    #         print('{}: {}'.format(k,v));
+
+    for item in list:
+        for k,v in item.items():
+            #v is the list of images in gallery k.
+            print('gallery #', k, 'has',len(v),'images');
+            print('image id list for gallery #', k, ':',v);
+            for i in v:
+                print('image id:',i, '---',imageComment.objects.filter(imageId_id=i).values('isGroupDiscussion').annotate(Count('isGroupDiscussion')))
+
+
+
+    return HttpResponse();
 def getkhanAcademyCount(request):
     khanacademy_count = khanAcademyAnswer.objects.values('posted_by_id').annotate(dcount=Count('posted_by_id'))
     #print(khanacademy_count)
@@ -1007,6 +1035,22 @@ def getkhanAcademyCount(request):
         kaResponse_list.append(dict)
 
     return HttpResponse(kaResponse_list)
+
+def getKhanAcademyDetails(request):
+    #get total post on each khan academy
+    khanacademy_count = khanAcademyAnswer.objects.values('ka_id').annotate(dcount=Count('ka_id'))
+
+    kid_list = [k['ka_id'] for k in khanAcademyAnswer.objects.values('ka_id').distinct()]
+
+    list = [];
+    for kid in kid_list:
+        dict = {}
+        dict[kid] = [{'userid':User.objects.get(pk=item['posted_by_id']).username, 'count':item['dcount']} for item in khanAcademyAnswer.objects.filter(ka_id=kid).values('posted_by_id').annotate(dcount=Count('posted_by_id'))]
+        list.append(dict)
+
+
+    return HttpResponse()
+
 
 def getBadgeCount(request):
     #total count of badges each user recieved
@@ -1028,6 +1072,14 @@ def getBadgeCount(request):
 
     #print(badge_list)
     return HttpResponse(badge_list)
+
+def getBadgeDetails(request):
+    badge_list = badgeModel.objects.values('message','badgeType','userid_id');
+    list=[];
+    for item in badge_list:
+        list.append(item)
+    print(list)
+    return HttpResponse(list)
 
 def addUserToGroupsForm(request):
     return render(request, 'app/group.html', {})

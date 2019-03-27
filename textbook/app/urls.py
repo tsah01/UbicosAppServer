@@ -55,9 +55,12 @@ urlpatterns = [
     url('dataToCSV',views.dataToCSV),
     url('perUserDataExtract',views.perUserDataExtract),
     url('getBadgeCount',views.getBadgeCount),
+    url('getBadgeDetails',views.getBadgeDetails),
     url('getimageCommentCount',views.getimageCommentCount),
+    url('getimageCommentDetails',views.getimageCommentDetails),
     url('getGeneralChatMsg',views.getGeneralChatMsg),
     url('getkhanAcademyCount',views.getkhanAcademyCount),
+    url('getKhanAcademyDetails',views.getKhanAcademyDetails),
     #teacherdashboard
     url('getGalleryTableTD/(?P<act_id>\d+)',views.getGalleryTableTD)
 
