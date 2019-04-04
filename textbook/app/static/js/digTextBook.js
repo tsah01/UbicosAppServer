@@ -2,6 +2,7 @@ var current_pagenumber = 1 //initial page number; gets updated with page change
 var type = '' //card type
 var groupArray = ['A', 'B','C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K']
 var activity_id
+var lastOpenedTool
 
 
 window.onerror = function(message, file, line) {
@@ -328,6 +329,8 @@ var bindActivityButtons = function(){
         // if gallery div is active, load the gallery
         if($('.card.gallery').hasClass('active')){
 
+            lastOpenedTool = 'gallery';
+
             // pass id to gallery activity - to upload image form in gallery.html
             $('#upload-img input[name="act-id"]').attr('value', id)
 
@@ -499,6 +502,7 @@ var bindActivityButtons = function(){
             //console.log('ka-url-passing to html', activityButton.attr('data-video-url'))
             $('a#ka-form-url').attr('href', activityButton.attr('data-video-url'))
             $('a#ka-form-url').text(activityButton.attr('data-video-topic'))
+            //if khan academy tool has two urls then --
             if(activityButton.attr('data-video-url2')){
                 console.log(activityButton.attr('data-video-url2'))
                 $('a#ka-form-url2').attr('href', activityButton.attr('data-video-url2'))
@@ -509,6 +513,8 @@ var bindActivityButtons = function(){
                 //hide that link
                 $('a#ka-form-url2').hide();
             }
+
+            lastOpenedTool = 'khan_academy';
 
              //check for persistence
              $.get({

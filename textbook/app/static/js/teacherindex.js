@@ -6,7 +6,7 @@ $(function(){
 
     //loadtable();
     //loadGraph();
-    updateKA():
+    updateKA();
     showUserList();
     detectTableClick();
 
@@ -93,8 +93,16 @@ var getRandomListData = function(groupid){
 var initStage = function(){
 
      //only show the user list -- hide rest of the divs
-     $('#teacher-user-list').show();
-     $('#single-user-view').hide();
+//     $('#teacher-user-list').show();
+//     $('#single-user-view').hide();
+
+        //lastOpenedTool variable is set in digTextbook.js when card tool is selected
+        if(lastOpenedTool === 'khan_academy'){
+            console.log("teacher dashboard:: ", lastOpenedTool);
+            $('.ka-projection-number-display').text('3');
+        }
+
+
 
 }
 //called from digTextbook.js
@@ -303,10 +311,10 @@ var tchr_showImageInGallery = function(data, gallery_type){
 
 
 var updateKA = function(){
-    getKAPerKAID
+
      $.ajax({
             type:'GET',
-            url:'http://'+ host_url +'/getKAPerKAID,
+            url:'http://'+ host_url +'/getKAPerKAID',
             async: false, //wait for ajax call to finish,
             success: function(data){
                 //returnValue = data.success;
