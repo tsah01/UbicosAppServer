@@ -19,9 +19,7 @@
 
              </ul>
         </div>
-        <ul class="teacher-view">
 
-        </ul>
         <div id="ka-right">
             <div id="ka-form-containter">
                 <p>Are you answering a question or posting a question?
@@ -32,8 +30,23 @@
                     <p> Write your response below. Once you have completed, click the copy button to
                     copy the answer in the clipboard and go paste it in Khan Academy.</p>
                     <textarea id="KAAnswer" class="user-answer-input" name="KAAnswer" placeholder="Write something.." style="height:180px"></textarea>
-                    <input id="ka-submit" type="button" value="Submit" class="user-input-submit-button" >
+
                 </form>
+                <div style="width: 100%;">
+                     <div id="ka-form-submit-button-div" style="float: left;">
+                        <input id="ka-submit" type="button" value="Submit" class="ka-user-input-submit-button" >
+                    </div>
+                    <div id="ka-showAnsweredQues">
+                        <p class="ka-answer-p" style="visibility: hidden;float: left;"></p>
+                        <div class="ka-row">
+                            <!--<button class="user-input-submit-button" id="ka-row-copy-button">copy answer</button>-->
+                            <input id="ka-row-copy-button" type="button" value="Copy" class="ka-user-input-submit-button">
+                        </div>
+                    </div>
+
+                </div>
+
+
 
                  <div class="prompt-card prompt-ka">
                     <a class="prompt-close-card"></a>
@@ -43,13 +56,10 @@
                     <p id="prompt-p-ka" ></p>
                  </div>
 
-                <div id="ka-showAnsweredQues">
-                        <p class="ka-answer-p" style="visibility: hidden;"></p>
-                        <div class="ka-row">
-                            <!--<button class="user-input-submit-button" id="ka-row-copy-button">copy answer</button>-->
-                            <input id="ka-row-copy-button" type="button" value="Copy" class="ka-copy-btn">
-                        </div>
-                 </div>
+               <ul class="teacher-view">
+
+               </ul>
+
 
             </div>
 

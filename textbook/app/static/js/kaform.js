@@ -150,7 +150,7 @@ var ka_submit_button = function(){
         $('.ka-answer-p').text(user_response)
 
         //show the copy button since answer is posted
-        $('#ka-showAnsweredQues').show();
+        //$('#ka-showAnsweredQues').show();
    })
 }
 

@@ -1,33 +1,48 @@
-<h1>Teacher Dashboard</h1>
+<!--<h1>Teacher Dashboard</h1>-->
 
-<div id="teacher-page">
+<!--<div id="teacher-page">-->
 
-    <!--<a id="backToTchrTable" href=""></a>-->
-    <!--<div id = "teacher-gallery-table">-->
+    <!--&lt;!&ndash;<a id="backToTchrTable" href=""></a>&ndash;&gt;-->
+    <!--&lt;!&ndash;<div id = "teacher-gallery-table">&ndash;&gt;-->
 
-       <!--<table >-->
-            <!--<tbody id="tbody"></tbody>-->
+       <!--&lt;!&ndash;<table >&ndash;&gt;-->
+            <!--&lt;!&ndash;<tbody id="tbody"></tbody>&ndash;&gt;-->
 
-       <!--</table>-->
+       <!--&lt;!&ndash;</table>&ndash;&gt;-->
 
-   <!--</div>-->
+   <!--&lt;!&ndash;</div>&ndash;&gt;-->
 
-    <!--<div style="width:430px; height:250px;">-->
-         <!--<ul id="tchr-gallery">-->
+    <!--&lt;!&ndash;<div style="width:430px; height:250px;">&ndash;&gt;-->
+         <!--&lt;!&ndash;<ul id="tchr-gallery">&ndash;&gt;-->
 
-        <!--</ul>-->
+        <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;&ndash;&gt;-->
+    <!--&lt;!&ndash;<div id="teacher-user-list" >&ndash;&gt;-->
+
+
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<div id="single-user-view">&ndash;&gt;-->
+        <!--&lt;!&ndash;<p>This is single user view</p>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+    <!--<div>-->
+
     <!--</div>-->
-    <!---->
-    <div id="teacher-user-list" >
 
+<!--</div>-->
 
-    </div>
-
-    <div id="single-user-view">
-        <p>This is single user view</p>
-    </div>
-
-</div>
+{% if list %}
+    <p> hello bello </p>
+    <!--<ul>-->
+    <!--{% for user in user_list %}-->
+        <!--<li><a href="/studentID/{{ user.id }}/">{{ user.username }}</a></li>-->
+    <!--{% endfor %}-->
+    <!--</ul>-->
+{% else %}
+    <p>No students registered in this class.</p>
+{% endif %}
 
 
 

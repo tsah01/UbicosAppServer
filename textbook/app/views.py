@@ -616,6 +616,26 @@ def aux_method_get_imgcomment_random_list_group_teacher(middlegroup_id, gallery_
     print(image_data)
 
     return image_data
+
+def getKAPerKAID(request):
+    ka_id = 1;
+
+    #gives the raw query object
+    ka_items = khanAcademyAnswer.objects.filter(ka_id=ka_id)
+
+    ka_items = serializers.serialize('json', ka_items, use_natural_foreign_keys=True)
+
+    print(ka_items)
+
+    list = [1,2,3,4,5];
+    context = {
+        'list': list,
+
+    }
+
+    return render(request, 'app/teacherindex.html', context)
+
+
 def insertBadges(request):
     badge = badgeModel(badgeType = request.POST.get('badgeType'), message = request.POST.get('message'), userid = request.user)
     badge.save()
