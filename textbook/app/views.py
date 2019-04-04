@@ -623,17 +623,27 @@ def getKAPerKAID(request):
     #gives the raw query object
     ka_items = khanAcademyAnswer.objects.filter(ka_id=ka_id)
 
-    ka_items = serializers.serialize('json', ka_items, use_natural_foreign_keys=True)
+    ka_items_json = serializers.serialize('json', ka_items, use_natural_foreign_keys=True)
+    print(ka_items_json)
 
-    print(ka_items)
+    ka_list = []
+    #iterate over the query
+    for o in ka_items:
+        data = {}
+        data['ka_image'] = str(o.ka_image);
+        data['posted_by'] = o.posted_by.get_username();
+        data['response_type'] = o.response_type;
+        data['response'] = o.response;
+        #json_data = json.dumps(data);
+        ka_list.append(data);
 
-    list = [1,2,3,4,5];
+
     context = {
-        'list': list,
+        'list': ka_list,
 
     }
 
-    return render(request, 'app/teacherindex.html', context)
+    return render(request, 'app/khanacademy_table.html', context);
 
 
 def insertBadges(request):
