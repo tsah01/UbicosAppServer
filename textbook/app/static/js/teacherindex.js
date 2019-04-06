@@ -54,7 +54,7 @@ var showUserList = function(){
 //        var li = $("<li/>").appendTo('#teacher-user-list');
 //        li.append('<a href="#" class="userprofile" data-username='+i+'> ' + i + '</a>'); //click detect handled in teacherindex.js
 
-          var atag = $('<a href="#" class="userprofile" data-username='+i+'> ' + i + '</a>').appendTo('#teacher-user-list');
+          var atag = $('ka-projection-number-display').appendTo('#teacher-user-list');
     }
 
     //reverse order
@@ -99,7 +99,8 @@ var initStage = function(){
         //lastOpenedTool variable is set in digTextbook.js when card tool is selected
         if(lastOpenedTool === 'khan_academy'){
             console.log("teacher dashboard:: ", lastOpenedTool);
-            $('.ka-projection-number-display').text('3');
+            $('.ka-projection-number-display-1').text('3');
+            $('.ka-projection-number-display-2').text('5');
         }
 
 
