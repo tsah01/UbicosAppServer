@@ -645,6 +645,8 @@ def getKAPerKAID(request):
 
     return render(request, 'app/khanacademy_table.html', context);
 
+def getDashboard(request):
+    return render(request, 'app/dashboard.html');
 
 def insertBadges(request):
     badge = badgeModel(badgeType = request.POST.get('badgeType'), message = request.POST.get('message'), userid = request.user)

@@ -15,6 +15,7 @@
     <link rel="stylesheet/less" type="text/css" href="{% static 'css/digTextBook.less' %}">
     <link rel="stylesheet/less" type="text/css" href="{% static 'js/jqPlot/jquery.jqplot.css' %}">
     <link rel="stylesheet/less" type="text/css" href="{% static 'js/jqPlot/jquery.jqplot.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
     <!-- Fonts -->
@@ -74,9 +75,11 @@
 
             <a id="feed-toggle"></a>
 
+            <a id="teacher-toggle"></a>
+
             <div id="activity-feed-view" class="main-view">
                 {% include 'app/activityfeed.html' %}
-                <div id ="suggestion_text">This is the suggestion badge</div>
+                <div id ="suggestion_text"></div>
             </div>
 
             <div id="activity-index-view" class="main-view" style="display: none;">
