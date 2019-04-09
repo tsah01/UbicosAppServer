@@ -737,6 +737,8 @@ var openImageView = function(galleryView, image){
 
     //remove previous single image before adding new one
     $('.section').children('img').remove();
+    $('.section').remove('#gallery-image-user-name');
+
 
 
     $('.section', singleImageViewer).append(image);
@@ -809,8 +811,6 @@ var openImageView = function(galleryView, image){
     //clear if any name added before
 
 
-
-    $("#gallery-image-user-name").remove();
 
 
     //now add the name
