@@ -79,16 +79,16 @@ body {font-family: Arial;background-color: lightblue;}
 <p>Click on the daily tabs to view daily activities, click x button in the top right corner to close the current tab:</p>
 
 <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Day 1</button>
-  <button class="tablinks" onclick="openCity(event, 'Paris')">Day 2</button>
-  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Day 3</button>
-  <button class="tablinks" onclick="openCity(event, 'Dhaka')">Day 4</button>
-  <button class="tablinks" onclick="openCity(event, 'Istanbul')">Day 5</button>
+  <button class="tablinks" onclick="openTab(event, 'day1')" id="defaultOpen">Day 1</button>
+  <button class="tablinks" onclick="openTab(event, 'day2')">Day 2</button>
+  <button class="tablinks" onclick="openTab(event, 'day3')">Day 3</button>
+  <button class="tablinks" onclick="openTab(event, 'day4')">Day 4</button>
+  <button class="tablinks" onclick="openTab(event, 'day5')">Day 5</button>
   <button class="tablinks" onclick="returnTextbook()">Textbook</button>
 
 </div>
 
-<div id="London" class="tabcontent">
+<div id="day1" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
   <h3>Day 1</h3>
     <div class="vertical-menu">
@@ -101,7 +101,7 @@ body {font-family: Arial;background-color: lightblue;}
   <p></p>
 </div>
 
-<div id="Paris" class="tabcontent">
+<div id="day2" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
   <h3>Day 2</h3>
      <div class="vertical-menu">
@@ -114,7 +114,7 @@ body {font-family: Arial;background-color: lightblue;}
   <p></p>
 </div>
 
-<div id="Tokyo" class="tabcontent">
+<div id="day3" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
   <h3>Day 3</h3>
      <div class="vertical-menu">
@@ -127,7 +127,7 @@ body {font-family: Arial;background-color: lightblue;}
   <p></p>
 </div>
 
-<div id="Dhaka" class="tabcontent">
+<div id="day4" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
   <h3>Day 4</h3>
      <div class="vertical-menu">
@@ -140,7 +140,7 @@ body {font-family: Arial;background-color: lightblue;}
   <p></p>
 </div>
 
-<div id="Istanbul" class="tabcontent">
+<div id="day5" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
   <h3>Day 5</h3>
      <div class="vertical-menu">
@@ -167,7 +167,7 @@ body {font-family: Arial;background-color: lightblue;}
 
 <script>
 host_url = window.location.host;
-function openCity(evt, cityName) {
+function openTab(evt, cityName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
   //hide all the tab divs first

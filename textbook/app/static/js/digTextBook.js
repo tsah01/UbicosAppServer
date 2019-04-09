@@ -87,7 +87,13 @@ $(function(){
      $('#teacher-toggle').click(function() {
             $(this).toggleClass('pressedf');
             if ($(this).hasClass("pressedf")){
-                window.location.href = "http://"+host_url+"/getDashboard";
+                var conf = confirm("You are about to view student information, are you sure?!");
+                if(conf){
+                    window.location.href = "http://"+host_url+"/getDashboard";
+                }else{
+                    $(this).removeClass("pressedf");
+                }
+
             }else{
 
             }
