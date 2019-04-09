@@ -87,10 +87,19 @@ function displayAllBadges(){
         $("img#"+key).on("mouseover", function () {
              //stuff to do on mouseover
              //alert('here') //works
+             //$('#badge-description').children('img').remove();
+               $('#badge-description').empty();
              var display = $(this).attr('id');
-             $('#badge-description').text(badge_dict[display]);
+             var badge_descript = $('#badge-description');
+
+
+             var img = $('<img/>', { id: display, src : 'http://'+ host_url + "/static/pics/" + display + ".png" }).css({"width":"50px", "margin-right": "5px", "margin-left": "5px"}).appendTo(badge_descript);
+
+             $('#badge-description').append("<p id = 'badge_name'>" + badge_dict[display] + "</p>");
+             $('#badge-description').append("<p id = 'badge_descrip'>This will be a short description on how you can earn this badge.</p>");
+
              $('#badge-description').css('opacity','1');
-             //console.log("hoverrring");
+             console.log(key);
 
 
         }).on("mouseout", function(){
