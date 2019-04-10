@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^ajax/imageComment/$', views.broadcastImageComment),
     url('updateImageFeed/(?P<img_id>\d+)', views.updateImageFeed),
     url('gallery/del/(?P<img_id>\d+)', views.imageDelete),
+    url('getGalleryPerID/(?P<gid>\d+)', views.getGalleryPerID),
     #url('brainstorm/save/',views.brainstormSave),
     url('brainstorm/save/',views.broadcastBrainstormNote),
     url('brainstorm/get/(?P<brainstorm_id>\d+)',views.brainstormGet),
@@ -36,7 +37,7 @@ urlpatterns = [
     url('submitAnswer',views.submitAnswer),
     url('uploadKAImage', views.uploadKAImage),
     url('submitKAAnswer',views.submitKAAnswer),
-    url('getKAPerKAID',views.getKAPerKAID),
+    url('getKAPerKAID/(?P<ka_id>[0-9]+)',views.getKAPerKAID),
     url('checkKAAnswer/(?P<ka_id>\d+)',views.checkKAAnswer),
     #badges
     url('insertBadges',views.insertBadges),

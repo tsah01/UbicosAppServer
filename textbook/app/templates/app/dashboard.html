@@ -87,84 +87,113 @@ body {font-family: Arial;background-color: lightblue;}
   <button class="tablinks" onclick="returnTextbook()">Textbook</button>
 
 </div>
+ <div class="vertical-menu" style="width:300px; float:left;">
+    <div id="day1" class="tabcontent">
+      <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+      <h3>Day 1</h3>
+        <div style="">
 
-<div id="day1" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-  <h3>Day 1</h3>
-    <div class="vertical-menu">
-      <!--<a href="#" class="active">Home</a>-->
-      <a href="/getKAPerKAID">Khan Academy</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-      <a href="#">Link 4</a>
-    </div>
-  <p></p>
-</div>
+              <!--<a href="#" class="active">Home</a>-->
 
-<div id="day2" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-  <h3>Day 2</h3>
-     <div class="vertical-menu">
-      <!--<a href="#" class="active">Home</a>-->
-      <a href="/getKAPerKAID">Khan Academy</a>
-      <a href="#">Table</a>
-      <a href="#">Link 3</a>
-      <a href="#">Link 4</a>
-    </div>
-  <p></p>
-</div>
+              <a href="/getKAPerKAID/1">Khan Academy</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+              <a href="#">Link 4</a>
 
-<div id="day3" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-  <h3>Day 3</h3>
-     <div class="vertical-menu">
-      <!--<a href="#" class="active">Home</a>-->
-      <a href="/getKAPerKAID">Khan Academy</a>
-      <a href="#">Gallery</a>
-      <a href="#">Table</a>
-      <a href="#">Link 4</a>
-    </div>
-  <p></p>
-</div>
+            <div style="width:900px; float:right; margin-left:10px;">
 
-<div id="day4" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-  <h3>Day 4</h3>
-     <div class="vertical-menu">
-      <!--<a href="#" class="active">Home</a>-->
-      <a href="/getKAPerKAID">Khan Academy</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-      <a href="#">Link 4</a>
-    </div>
-  <p></p>
-</div>
+                {% if list %}
+                <table border="1">
+                    <tr>
+                      <!--<td>Image Link</td>-->
+                      <td>Posted By</td>
+                      <td>Response Type</td>
+                      <td>Response</td>
+                    </tr>
+                      {% for item in list %}
+                        <tr>
+                          <!--<td>{{item.ka_image}}</td>-->
+                          <td>{{item.posted_by}}</td>
+                          <td>{{item.response_type}}</td>
+                          <td>{{item.response}}</td>
+                        </tr>
+                      {% endfor %}
+                    </table>
 
-<div id="day5" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-  <h3>Day 5</h3>
-     <div class="vertical-menu">
-      <!--<a href="#" class="active">Home</a>-->
-      <a href="/getKAPerKAID">Khan Academy</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-      <a href="#">Link 4</a>
-    </div>
-  <p></p>
-</div>
-<div id="textbook" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-  <h3>Day 5</h3>
-     <div class="vertical-menu">
-      <!--<a href="#" class="active">Home</a>-->
-      <a href="/getKAPerKAID">Khan Academy</a>
-      <a href="#">Gallery</a>
-      <a href="#">Link 3</a>
-      <a href="#">Link 4</a>
-    </div>
-  <p></p>
-</div>
+                    {% else %}
+                        <p></p>
+                    {% endif %}
+                </div>
 
+        </div>
+
+      <p></p>
+    </div>
+
+    <div id="day2" class="tabcontent">
+      <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+      <h3>Day 2</h3>
+         <div class="vertical-menu">
+          <!--<a href="#" class="active">Home</a>-->
+          <a href="/getKAPerKAID/1">Khan Academy</a>
+          <a href="#">Table</a>
+          <a href="#">Link 3</a>
+          <a href="#">Link 4</a>
+        </div>
+      <p></p>
+    </div>
+
+    <div id="day3" class="tabcontent">
+      <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+      <h3>Day 3</h3>
+         <div class="vertical-menu">
+          <!--<a href="#" class="active">Home</a>-->
+          <a href="/getKAPerKAID/3">Khan Academy</a>
+          <a href="#">Gallery</a>
+          <a href="#">Table</a>
+          <a href="#">Link 4</a>
+        </div>
+      <p></p>
+    </div>
+
+    <div id="day4" class="tabcontent">
+      <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+      <h3>Day 4</h3>
+         <div class="vertical-menu">
+          <!--<a href="#" class="active">Home</a>-->
+          <a href="/getKAPerKAID/3">Khan Academy</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+          <a href="#">Link 4</a>
+        </div>
+      <p></p>
+    </div>
+
+    <div id="day5" class="tabcontent">
+      <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+      <h3>Day 5</h3>
+         <div class="vertical-menu">
+          <!--<a href="#" class="active">Home</a>-->
+          <a href="/getKAPerKAID/4">Khan Academy</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+          <a href="#">Link 4</a>
+        </div>
+      <p></p>
+    </div>
+    <div id="textbook" class="tabcontent">
+      <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+      <h3>Day 5</h3>
+         <div class="vertical-menu">
+          <!--<a href="#" class="active">Home</a>-->
+          <a href="/getKAPerKAID/5">Khan Academy</a>
+          <a href="#">Gallery</a>
+          <a href="#">Link 3</a>
+          <a href="#">Link 4</a>
+        </div>
+      <p></p>
+    </div>
+ </div>
 <script>
 host_url = window.location.host;
 function openTab(evt, cityName) {

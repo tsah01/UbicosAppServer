@@ -617,8 +617,7 @@ def aux_method_get_imgcomment_random_list_group_teacher(middlegroup_id, gallery_
 
     return image_data
 
-def getKAPerKAID(request):
-    ka_id = 1;
+def getKAPerKAID(request,ka_id):
 
     #gives the raw query object
     ka_items = khanAcademyAnswer.objects.filter(ka_id=ka_id)
@@ -643,8 +642,36 @@ def getKAPerKAID(request):
 
     }
 
-    return render(request, 'app/khanacademy_table.html', context);
+    return render(request, 'app/dashboard.html', context);
 
+def getGalleryPerID(request,gid):
+
+    #gives the raw query object
+    images = imageModel.objects.filter(gallery_id=gid)
+
+    image_list = []
+    for im in images:
+        comment_count_list = []
+        comment_count_list = [0] * 31
+        item = {}
+        item['image_id'] = im.pk
+        item['posted_by'] = im.posted_by.get_username()
+        image_comments = imageComment.objects.filter(imageId = im.pk)
+        item['comments'] = [im.content for im in image_comments]
+        image_list.append(item)
+
+
+
+
+    print(image_list)
+
+
+    context = {
+        'gallery_list': image_list,
+
+    }
+
+    return render(request, 'app/dashboard.html', context);
 def getDashboard(request):
     return render(request, 'app/dashboard.html');
 
