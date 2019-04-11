@@ -642,7 +642,8 @@ def getKAPerKAID(request,ka_id):
 
     }
 
-    return render(request, 'app/dashboard.html', context);
+    #return render(request, 'app/dashboard.html', context); #sent to html itself
+    return JsonResponse({'success': ka_list});
 
 def getGalleryPerID(request,gid):
 

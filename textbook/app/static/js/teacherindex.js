@@ -2,6 +2,8 @@
 var users_list=['ant', 'giraffe', 'penguin', 'sheep', 'hippo', 'lion', 'dolphin', 'eagle', 'frog', 'duck', 'bee', 'bat', 'elephant', 'leopard', 'panda', 'fish', 'fox', 'alligator', 'kangaroo', 'liger', 'squirrel', 'zebra', 'bear', 'deer', 'dog', 'tiger', 'monkey', 'rabbit', 'raccoon', 'AW', 'user1', 'user2']
 var random_group_id
 $(function(){
+    console.log("teacherindex.js loaded");
+
 
 
     //loadtable();
@@ -9,6 +11,7 @@ $(function(){
     updateKA();
     showUserList();
     detectTableClick();
+    dashboard();
 
     //https://stackoverflow.com/questions/21913283/how-to-catch-click-event-with-jquery-on-dynamically-created-button
     $('#tbody').on('click','.tchr-uname',function(e){
@@ -40,6 +43,44 @@ $(function(){
 
 
 })
+
+var dashboard = function(){
+
+    //
+    $(".day1ka").click(function(){
+        //get the activity id
+
+        var dashboard_ka_id = $(this).data("dashboard-ka-id");
+        //console.log(dashboard_ka_id);
+
+        //clear any tables if present
+        $("#dashboard-table").empty();
+
+        var ka_table_info;
+        $.ajax({
+            type:'GET',
+            url:'http://'+ host_url +'/getKAPerKAID/'+dashboard_ka_id,
+            async: false, //wait for ajax call to finish
+            success: function(e){
+                ka_table_info = e.success;
+                console.log(ka_table_info);
+            }
+        })
+        //update the div with table
+        var table = $('<table></table>').addClass('dashboard-table');
+        $.each(ka_table_info, function(i, word) {
+            console.log(word['response'])
+
+            var markup = "<tr><td>" + word['posted_by'] + "</td><td>" + word['response'] + "</td></tr>";
+            table.append(markup);
+
+          });
+
+         $("#dashboard-table").append(table);
+    })
+
+
+}
 
 var showUserList = function(){
 
@@ -108,49 +149,6 @@ var initStage = function(){
 }
 //called from digTextbook.js
 var loadtable = function (activity_id){
-
-
-
-
-//    var $tableBody = $('#tbody'); // use a Id selector here
-//    var rowHTML = '';
-//
-//    //clear any previous rows
-//    $('#tbody').empty();
-//
-//    dataFromServer = getGalleryInfo(activity_id); //ajax method call
-////    console.log(dataFromServer)
-////    console.log(dataFromServer.length)
-////    console.log(dataFromServer[0].comment_count.length)
-////    console.log(dataFromServer[1].comment_count.length)
-//
-//
-//       //display first row
-//       rowHTML = '';
-//       rowHTML += '<td width=20%><a>Username</a></td>';
-//       $.each(dataFromServer, function(key, value){
-//            rowHTML += '<td width=30%><a>Image '+value.image_id+'</a></td>';
-//       })
-//       $tableBody.append('<tr>' + rowHTML + '</tr>');
-//
-//
-//       //display the next rows
-//       var current = 0
-//       $.each(users_list, function(key,value){
-//
-//             rowHTML = '';
-//             rowHTML += '<td width=30%><a class="tchr-uname" data-uname=' + users_list[current] + '>' + users_list[current] + '</a></td>';
-//
-//             $.each(dataFromServer, function(key,value){
-//                //console.log(value.comment_count)
-//                rowHTML += '<td width=30%><a data-index=' + value.image_id + '>' + value.comment_count[current] + '</a></td>';
-//             })
-//        $tableBody.append('<tr>' + rowHTML + '</tr>');
-//        current++;
-//
-//    })
-//
-//     $('#teacher-gallery-table').append($tableBody);
 
 
 }
