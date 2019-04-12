@@ -620,29 +620,57 @@ def aux_method_get_imgcomment_random_list_group_teacher(middlegroup_id, gallery_
 def getKAPerKAID(request,ka_id):
 
     #gives the raw query object
-    ka_items = khanAcademyAnswer.objects.filter(ka_id=ka_id)
+    ka_items = khanAcademyAnswer.objects.filter(ka_id=ka_id).order_by('posted_by__username') #posted by is the foreign key, so it was sorting based on the
+                                                                                            #id, posted_by__username sorts alphabetically.
 
     ka_items_json = serializers.serialize('json', ka_items, use_natural_foreign_keys=True)
-    print(ka_items_json)
+    #print(ka_items_json)
+
+    #user id who posted
+    userid_list = [user['posted_by_id'] for user in khanAcademyAnswer.objects.values('posted_by_id').distinct()]
+    #find users who did not post
+    users_did_not_post = [x for x in getAllUserList() if x not in userid_list]
+    #print(users_did_not_post)
+
+
+    #count number of student post
+    counter = Counter()
+    for o in ka_items:
+        counter[o.posted_by.get_username()] += 1;
 
     ka_list = []
+    #add users who did not post anything #not so happy with this approach #remove starts here
+    for o in users_did_not_post:
+        data = {}
+        data['ka_image'] = '';
+        data['posted_by'] = o;
+        data['count'] = 0;
+        data['response_type'] = '';
+        data['response'] = '';
+        #json_data = json.dumps(data);
+        ka_list.append(data);
+    # remove finishes here
+
     #iterate over the query
     for o in ka_items:
         data = {}
         data['ka_image'] = str(o.ka_image);
         data['posted_by'] = o.posted_by.get_username();
+        data['count'] = counter[o.posted_by.get_username()];
         data['response_type'] = o.response_type;
         data['response'] = o.response;
         #json_data = json.dumps(data);
         ka_list.append(data);
 
+    #sort list of dictionary items by their username
+    ka_list = sorted(ka_list, key=lambda k: k['posted_by'])
 
-    context = {
-        'list': ka_list,
-
-    }
-
+    # context = {
+    #     'list': ka_list,
+    #
+    # }
     #return render(request, 'app/dashboard.html', context); #sent to html itself
+
     return JsonResponse({'success': ka_list});
 
 def getGalleryPerID(request,gid):
@@ -662,8 +690,6 @@ def getGalleryPerID(request,gid):
         image_list.append(item)
 
 
-
-
     print(image_list)
 
 
@@ -673,6 +699,7 @@ def getGalleryPerID(request,gid):
     }
 
     return render(request, 'app/dashboard.html', context);
+
 def getDashboard(request):
     return render(request, 'app/dashboard.html');
 
@@ -1154,3 +1181,8 @@ def deleteAllItems(request):
     # groupInfo.objects.all().delete()
 
     return HttpResponse('')
+
+def getAllUserList():
+    users_list = [str(user) for user in User.objects.all()]
+
+    return users_list;

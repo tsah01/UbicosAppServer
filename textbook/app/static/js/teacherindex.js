@@ -68,10 +68,11 @@ var dashboard = function(){
         })
         //update the div with table
         var table = $('<table></table>').addClass('dashboard-table');
+        table.append("<tr><td style='width:100px;'>user name</td><td style='width:50px;'>total posts</td><td>response</td></tr>");
         $.each(ka_table_info, function(i, word) {
             console.log(word['response'])
 
-            var markup = "<tr><td>" + word['posted_by'] + "</td><td>" + word['response'] + "</td></tr>";
+            var markup = "<tr><td>" + word['posted_by'] + "</td><td style='width:50px;'>" + word['count'] + "</td><td>" + word['response'] + "</td></tr>";
             table.append(markup);
 
           });
