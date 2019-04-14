@@ -304,6 +304,7 @@ var bindActivityButtons = function(){
         // if video tab is active get the video url and display in video.html
         //display the video url in a new tab instead of the card
         if(type == 'video'){
+            lastOpenedTool = 'video';
             $('.card.active').removeClass('active');
             var video_url = activityButton.attr('data-video-url');
             window.open(video_url, '_blank'); //open paint splash game in a new window
@@ -311,7 +312,7 @@ var bindActivityButtons = function(){
 //        ------------------------------TABLE-----------------------
         //if the table tab is active
         if($('.card.table').hasClass('active')){
-
+              lastOpenedTool = 'table';
 
              $('input[name="table-id"]').attr('value', id)
              $('.card.' + type + ' h1').text('Data #' +id );
@@ -418,7 +419,7 @@ var bindActivityButtons = function(){
                 $(".teacher-view").css("display", "block");
                  $.ajax({
                     type:'GET',
-                    url:'http://'+ host_url +'/randomDiscussionList',
+                    url:'http://'+ host_url +'/randomDiscussionList', //fetches number of groups
                     async: false, //wait for ajax call to finish, else logged_in is null in the following if condition
                     success: function(e){
 

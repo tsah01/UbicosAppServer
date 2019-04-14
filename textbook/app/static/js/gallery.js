@@ -883,6 +883,7 @@ var openImageView = function(galleryView, image){
 
 };
 
+//called from digTextBook.js
 function populateTeacherViewDiv(list){
 
     $('.teacher-view').empty();

@@ -542,13 +542,55 @@ def aux_method_get_img_random_list_group(middlegroup_id, gallery_id):
 
     return image_data_all
 
+# check random_group_users table for distinct group numbers, converts the query into list
+# returns the list of groups
+# called from digTextbook.js
 def randomDiscussionList(request):
     #get total groups
     middlegroup_id = random_group_users.objects.values('group').distinct()
 
-    middlegroup_id = [int(q["group"]) for q in middlegroup_id]
-    print(middlegroup_id)
-    return JsonResponse({'list': middlegroup_id})
+    #convert query into list
+    middlegroup_id_list = [int(q["group"]) for q in middlegroup_id]
+    print('randomDiscussionList method: ', middlegroup_id_list)
+
+    return JsonResponse({'list': middlegroup_id_list})
+
+
+def dashboardGalleryInfo(request):
+    gallery_id = 1;
+
+    # get total groups
+    info_query = random_group_users.objects.filter(gallery_id=gallery_id).values('group').distinct()
+
+    # convert query into list
+    group_list = [int(q["group"]) for q in info_query]
+
+    list=[]
+    for group_id in group_list:
+        dict={};
+
+        #store group id for this particular gallery
+        dict['group_id'] = group_id
+
+        info_query = random_group_users.objects.filter(gallery_id=gallery_id).filter(group=group_id)
+
+        # store user list for this group for this gallery
+        #  get the user id from the users table and get their username
+
+        temp = [User.objects.get(pk=e.users_id).get_username() for e in info_query]
+        temp.remove('AW') #remove simply removes the item, does not return anything. so print the list again
+        dict['user_list'] = temp
+        #print(dict['user_list'])
+
+        # get the total number of comments by the users for each group for this gallery
+        image_data = aux_method_get_imgcomment_random_list_group_teacher(group_id, gallery_id)
+        dict['total_comment'] = len(image_data)
+
+        list.append(dict);
+
+    #print([q["fields"] for q in info_query])
+    return JsonResponse({'list': list})
+
 
 def updateDiscussionImageFeed(request, gallery_id):
 
