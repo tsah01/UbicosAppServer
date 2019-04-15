@@ -81,10 +81,11 @@ function postMessage(){
 
     //get the currently typed message
     var inputEl = $("input[name='msg-text']");
-    inputEl.prop('disabled', true);
+    //inputEl.prop('disabled', true);
     var message = inputEl.val();
     console.log('user message :: '+message)
 
+    //defined in keywordMatching.js
     showPrompt(message, "gm");
 
         if(message == ""){
@@ -103,10 +104,10 @@ function postMessage(){
                 success: function (data) {
                     //empty the message pane
                     inputEl.val('');
-                    inputEl.prop('disabled', false);
+                    //inputEl.prop('disabled', false);
                 },
                 error: function(){
-                    inputEl.prop('disabled', false);
+                    //inputEl.prop('disabled', false);
                 }
             });
 

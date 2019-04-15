@@ -759,7 +759,10 @@ def getBadges(request):
         print(badge['badgeType'])
         badgeList.append(badge['badgeType'])
 
-    print(badgeList)
+    #print(badgeList)
+
+    badge_count = badgeModel.objects.values('badgeType').annotate(dcount=Count('badgeType'))
+    print(badge_count)
 
     return JsonResponse({'badgeList': badgeList})
 

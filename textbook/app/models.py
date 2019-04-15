@@ -61,6 +61,7 @@ class badgeModel(models.Model):
     message = models.CharField(max_length=400)
     badgeType = models.CharField(max_length=400)
 
+
     def natural_key(self):
         return (self.userid.username)
 

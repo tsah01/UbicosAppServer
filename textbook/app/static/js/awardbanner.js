@@ -1,13 +1,11 @@
 var host_url = window.location.host
 var badges = [];
+var badge_count = [];
 var dict = {'suggestion': false, 'social' : false, 'relevance' : false, 'reflection' : false, 'ques' : false, 'feedback' : false, 'explanation' : false, 'cocon' : false};
 
 $(function(){
+
     displayAllBadges();
-
-    //hovering effect on all the badges
-
-
 
 
 })
