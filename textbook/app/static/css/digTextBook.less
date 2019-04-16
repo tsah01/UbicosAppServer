@@ -709,7 +709,7 @@ a {
 
     .user-image span {
         position: absolute;
-        bottom: -20px;
+        bottom: -23px;
         left: 0;
         width: 100%;
         display: inline-block;
@@ -1598,7 +1598,7 @@ a {
 
 /* user prompt related css start*/
 .prompt {
-    background-color: #3d7ce2;
+    background-image: linear-gradient(to bottom right, #6699ff, #67CCBC);
 }
 
 .prompt-ka, .prompt-gm {
@@ -1606,33 +1606,37 @@ a {
 }
 
 .prompt-card {
+    display: none;
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     box-shadow: 0 0 5px rgba(30, 192, 145,1);
-    position: fixed;
-    top: 0%;
-    height: 10%;
-    width: 50%;
+    position: absolute;
+    top: 20%;
+    left: 28%;
+    height: 42%;
+    width: 41%;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    right: 0;
     color:  white;
     margin: 5px 5px 5px 5px !important;
     transform: translateX(100%);
     transition: all 0.4s;
     transition-timing-function: ease-out;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
     z-index: 2;
 }
 
 
 .prompt-card.prompt.active {
+    display : block;
     transform: translateX(0);
     transition: all 0.4s;
     transition-timing-function: ease-out;
-    box-shadow: 4px 0 4px #3d7ce2;
+
 }
 
 .prompt-card.prompt-ka.active, .prompt-card.prompt-gm.active {
@@ -1647,32 +1651,31 @@ a {
     margin:0px;
     height:32px;
     max-width:100%;
-    float:left;
-    overflow:auto;
     position:relative;
-    top: 25%;
+    margin-left: 35px;
+    margin-top: 10px;
 
 }
 
 .prompt-close-card {
     display: inline-block;
     position: absolute;
-    top: 10px;
-    right: 0px;
-    height: 15px;
-    width: 15px;
+    top: 45px;
+    right: 55px;
+    height: 10px;
+    width: 10px;
     background: url('/static/pics/close-card.png') no-repeat;
     background-size: 100%;
     z-index: 2;
 }
 
 #prompt-badge-img, #prompt-badge-img-ka, #prompt-badge-img-gm{
-    width:32px;
-    height:32px;
-    float:left;
-    margin: 0 10px;
+    width:70px;
+    height:100px;
+    left: 27%;
+    margin: 50px 10px 0px 20px;
     position:relative;
-    top:25%
+
 }
 
 /* user prompt related css finish*/
@@ -1769,7 +1772,7 @@ a {
     font-size: 20px;
     left: 20%;
     top: -5%;
-    margin: 1px 1px 1px 1px;
+    margin: 2px 2px 2px 2px;
 
 }
 
@@ -1793,5 +1796,6 @@ a {
   float: right;
   cursor: pointer;
   font-size: 28px;
+  margin-right: 10px;
 }
 
