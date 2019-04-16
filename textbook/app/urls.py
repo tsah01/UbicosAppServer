@@ -66,7 +66,8 @@ urlpatterns = [
     #teacherdashboard
     url('getGalleryTableTD/(?P<act_id>\d+)',views.getGalleryTableTD),
     url('dashboardGalleryInfo/',views.dashboardGalleryInfo),
-    url('getDashboard',views.getDashboard)
+    url('getDashboard',views.getDashboard),
+    url('getGalleryPerID/(?P<gid>\d+)',views.getGalleryPerID)
 
 
 ]

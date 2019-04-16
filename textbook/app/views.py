@@ -661,17 +661,21 @@ def aux_method_get_imgcomment_random_list_group_teacher(middlegroup_id, gallery_
 
 def getKAPerKAID(request,ka_id):
 
+
+    plusone = int(ka_id) + 1
     #gives the raw query object
-    ka_items = khanAcademyAnswer.objects.filter(ka_id=ka_id).order_by('posted_by__username') #posted by is the foreign key, so it was sorting based on the
+    ka_items = khanAcademyAnswer.objects.filter(ka_id__in=[ka_id, str(plusone)]).order_by('posted_by__username') #posted by is the foreign key, so it was sorting based on the
                                                                                             #id, posted_by__username sorts alphabetically.
 
     ka_items_json = serializers.serialize('json', ka_items, use_natural_foreign_keys=True)
     #print(ka_items_json)
 
     #user id who posted
-    userid_list = [user['posted_by_id'] for user in khanAcademyAnswer.objects.values('posted_by_id').distinct()]
+    userid_list = [User.objects.get(pk=user['posted_by_id']).get_username() for user in khanAcademyAnswer.objects.values('posted_by_id').distinct()]
+    #print(userid_list)
     #find users who did not post
     users_did_not_post = [x for x in getAllUserList() if x not in userid_list]
+    #print(len(users_did_not_post))
     #print(users_did_not_post)
 
 
@@ -705,7 +709,10 @@ def getKAPerKAID(request,ka_id):
         ka_list.append(data);
 
     #sort list of dictionary items by their username
-    ka_list = sorted(ka_list, key=lambda k: k['posted_by'])
+    #ka_list = sorted(ka_list, key=lambda k: k['posted_by'])
+
+    #sort list by their counts
+    ka_list = sorted(ka_list, key=lambda k: k['count'])
 
     # context = {
     #     'list': ka_list,
@@ -734,13 +741,7 @@ def getGalleryPerID(request,gid):
 
     print(image_list)
 
-
-    context = {
-        'gallery_list': image_list,
-
-    }
-
-    return render(request, 'app/dashboard.html', context);
+    return JsonResponse({'success': image_list});
 
 def getDashboard(request):
     return render(request, 'app/dashboard.html');

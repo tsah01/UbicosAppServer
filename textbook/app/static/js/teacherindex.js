@@ -49,7 +49,6 @@ var dashboard = function(){
     //
     $(".day1ka").click(function(){
         //get the activity id
-
         var dashboard_ka_id = $(this).data("dashboard-ka-id");
         //console.log(dashboard_ka_id);
 
@@ -79,6 +78,41 @@ var dashboard = function(){
 
          $("#dashboard-table").append(table);
     })
+
+    $(".day1gallery").click(function(){
+        //get the activity id
+        var dashboard_gid = $(this).data("dashboard-gid");
+
+         //clear any tables if present
+         $("#dashboard-table").empty();
+
+         var gallery_table_info;
+        $.ajax({
+            type:'GET',
+            url:'http://'+ host_url +'/getGalleryPerID/'+dashboard_gid,
+            async: false, //wait for ajax call to finish
+            success: function(e){
+                gallery_table_info = e.success;
+                console.log(gallery_table_info);
+            }
+        })
+
+        //update the div with table
+        var table = $('<table></table>').addClass('dashboard-table');
+        table.append("<tr><td style='width:100px;'>user name</td><td style='width:50px;'>image id</td><td>response</td></tr>");
+        $.each(gallery_table_info, function(i, word) {
+            console.log(word['response'])
+
+            var markup = "<tr><td>" + word['posted_by'] + "</td><td style='width:50px;'>" + word['image_id'] + "</td><td>" + word['comments'] + "</td></tr>";
+            table.append(markup);
+
+          });
+
+         $("#dashboard-table").append(table);
+
+
+    })
+
 
 
 }
