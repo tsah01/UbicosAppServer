@@ -81,13 +81,23 @@ function displayAllBadges(){
 
   }
 
-var badge_dict_description = {'suggestion': 'Suggestion Description', 'social' : 'Good Citizen Description', 'relevance' : 'Relevant Post Description',
-'reflection' : 'Good Communication Description', 'ques' : 'Question Description', 'feedback' : 'Feedback Description',
-'explanation' : 'Good Explanation description', 'cocon': 'Co-Construction description'};
+var badge_dict_description = {'suggestion': 'You get this badge when you provide suggestion',
+'social' : 'You get this badge when you are social',
+'relevance' : 'You get this badge when you post something related to the topic',
+'reflection' : 'You get this badge when you explain your understanding',
+'ques' : 'You get this badge when you ask a question',
+'feedback' : 'You get this badge when you provide a feedback',
+'explanation' : 'You get this badge when you provide explanation',
+'cocon': 'You get this badge posting comment based on others comment'};
 
-var badge_dict_example = {'suggestion': 'Suggestion Example', 'social' : 'Good Citizen Example', 'relevance' : 'Relevant Post Example',
-'reflection' : 'Good Communication Example', 'ques' : 'Question Example', 'feedback' : 'Feedback Example',
-'explanation' : 'Good Explanation Example', 'cocon': 'Co-Construction Example'};
+var badge_dict_example = {'suggestion': 'Next time try multiplication..',
+'social' : 'Good job on the board we got the same answers on our board.',
+'relevance' : 'The shape of the circle...',
+'reflection' : 'I agree/disagree to your answer because....',
+'ques' : 'What do you mean by...?',
+'feedback' : 'The solution posted here are great..',
+'explanation' : 'I think that this point is important, because…',
+'cocon': 'If I compare your answer to my answer, I think....'};
 
   function hoverBadge(){
 
@@ -111,7 +121,15 @@ var badge_dict_example = {'suggestion': 'Suggestion Example', 'social' : 'Good C
 
              $('#badge-description').append("<p id = 'badge_descrip'>"+badge_dict_description[display]+".</p>");
 
-             $('#badge-description').append("<p id = 'badge_example'>"+badge_dict_example[display]+".</p>");
+//             $('#badge-description').append("<p id = 'badge_example'>"+badge_dict_example[display]+".</p>");
+
+              var example_string =  "<div id='talkmoves-copy'><p id = 'badge_example'>"+badge_dict_example[display]+".</p>"+
+               "<div class='tm-row' ><input id='tm-row-copy-button' type='button' name='1' value='Copy' class='bannercopy'>"+
+                "</div>"+
+                "</div>"
+
+             $('#badge-description').append(example_string);
+
 
              $('#badge-description').css('opacity','1');
              console.log(key);

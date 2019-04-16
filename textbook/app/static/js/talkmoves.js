@@ -7,7 +7,8 @@ $(function(){
 
 var copy_tm_text_button = function(value){
 
-    $('#tm-row-copy-button').click(function(value){
+     $(document).on('click','#talkmoves-copy .bannercopy',function(value){
+     //$('#tm-row-copy-button').click(function(value){
         //alert($(this).attr('name'));
         //https://jqueryhouse.com/copy-data-to-clipboard-using-jquery/
         var copied_text = $(this).parent().siblings().text();
