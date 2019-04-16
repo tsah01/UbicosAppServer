@@ -3,8 +3,8 @@ var keywords_obj = new Object();
     keywords_obj.explanation="because,cause,would be,but,since,for example,an example";
     keywords_obj.feedback = "correct,incorrect,correct answer,incorrect answer,right answer,didnt understand,did not understand,i understand";
     keywords_obj.suggestion = "i think,should,could be,try";
-    keywords_obj.relevance = "sphere,cone,cylinder,area,volume,hemisphere,radius,diameter,circumference,pi,surface area";
     keywords_obj.ques= "how,what,where,why,can you,did,do,does";
+    keywords_obj.relevance = "sphere,cone,cylinder,area,volume,hemisphere,radius,diameter,circumference,pi,surface area";
     keywords_obj.reflection="i agree,i disagree,confused";
     keywords_obj.cocon="based on your idea,compare your answer to my answer,you did,like your,you did,you have done";
 
@@ -56,7 +56,7 @@ function showPrompt(message, platform){
 
             //if matches with a badge already received before, return
             //https://stackoverflow.com/questions/18867599/jquery-inarray-how-to-use-it-right
-            if(jQuery.inArray(index, badges) > -1) return false;
+            //if(jQuery.inArray(index, badges) > -1) return false;
 
             if(platform === 'ka'){
                 $('.prompt-card.prompt-ka').addClass('active');
