@@ -25,7 +25,9 @@ var copy_tm_text_button = function(value){
             document.execCommand("copy");
             $('div#talkmoves-copy').find("#selVal").remove();
 
-            alert("Copied the text: " + copied_text);
+            //alert("Copied the text: " + copied_text);
+
+            //set to the message input box
 
         }
 
