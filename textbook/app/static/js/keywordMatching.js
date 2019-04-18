@@ -56,7 +56,7 @@ function showPrompt(message, platform){
 
             //if matches with a badge already received before, return
             //https://stackoverflow.com/questions/18867599/jquery-inarray-how-to-use-it-right
-            //if(jQuery.inArray(index, badges) > -1) return false;
+            if(jQuery.inArray(index, badges) > -1) return false;
 
             if(platform === 'ka'){
                 $('.prompt-card.prompt-ka').addClass('active');
