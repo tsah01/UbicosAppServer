@@ -8,7 +8,7 @@ $(function(){
 
     //loadtable();
     //loadGraph();
-    updateKA();
+
     showUserList();
     detectTableClick();
     dashboard();
@@ -380,19 +380,7 @@ var tchr_showImageInGallery = function(data, gallery_type){
 }
 
 
-var updateKA = function(){
 
-     $.ajax({
-            type:'GET',
-            url:'http://'+ host_url +'/getKAPerKAID',
-            async: false, //wait for ajax call to finish,
-            success: function(data){
-                //returnValue = data.success;
-            }
-        })
-
-
-}
 
 //var loadGraph = function(){
 //

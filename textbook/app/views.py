@@ -738,7 +738,6 @@ def getGalleryPerID(request,gid):
         item['comments'] = [im.content for im in image_comments]
         image_list.append(item)
 
-
     print(image_list)
 
     return JsonResponse({'success': image_list});

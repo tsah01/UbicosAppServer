@@ -169,11 +169,11 @@ function toggleGraph(graphVisible){
 
 
 function toggleColumn(tdX, tdY, tdClear, enabled){
-    tdX.toggleClass('disabled', !enabled);
-    tdY.toggleClass('disabled', !enabled);
-    tdClear.toggleClass('disabled', !enabled);
-    $('input', tdX).prop('disabled', !enabled);
-    $('input', tdY).prop('disabled', !enabled);
+//    tdX.toggleClass('disabled', !enabled);
+//    tdY.toggleClass('disabled', !enabled);
+//    tdClear.toggleClass('disabled', !enabled);
+//    $('input', tdX).prop('disabled', !enabled);
+//    $('input', tdY).prop('disabled', !enabled);
 }
 
 function handleChange(){
