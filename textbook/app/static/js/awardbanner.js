@@ -94,10 +94,19 @@ var badge_dict_example = {'suggestion': 'Next time try multiplication..',
 'social' : 'Good job on the board we got the same answers on our board.',
 'relevance' : 'The shape of the circle...',
 'reflection' : 'I agree/disagree to your answer because....',
-'ques' : 'What do you mean by...?',
+'ques' : 'What do you mean by that?',
 'feedback' : 'The solution posted here are great..',
 'explanation' : 'I think that this point is important, because…',
 'cocon': 'If I compare your answer to my answer, I think....'};
+
+var badge_dict_prompt_copy = {'suggestion': 'Next time try ...',
+'social' : 'Thank you...',
+'relevance' : 'The shape of the circle...',
+'reflection' : 'I agree/disagree to your answer because....',
+'ques' : 'Why did you...instead of...?',
+'feedback' : 'The solution posted here are great..',
+'explanation' : 'I think...because...',
+'cocon': 'You did... but another way to do it is...'};
 
   function hoverBadge(){
 
@@ -121,18 +130,18 @@ var badge_dict_example = {'suggestion': 'Next time try multiplication..',
 
              $('#badge-description').append("<p id = 'badge_descrip'>"+badge_dict_description[display]+".</p>");
 
-//             $('#badge-description').append("<p id = 'badge_example'>"+badge_dict_example[display]+".</p>");
+             $('#badge-description').append("<p id = 'badge_example'>"+badge_dict_example[display]+".</p>");
 
-              var example_string =  "<div id='talkmoves-copy'><p id = 'badge_example'>"+badge_dict_example[display]+".</p>"+
-               "<div class='tm-row' ><input id='tm-row-copy-button' type='button' name='1' value='Copy' class='bannercopy'>"+
+              var example_string =  "<div id='talkmoves-copy'><p id = 'badge_example' style='visibility: hidden;float: left;'>"+badge_dict_prompt_copy[display]+".</p>"+
+               "<div class='tm-row'><input id='tm-row-copy-button' type='button' name='1' value='Copy' class='bannercopy'>"+
                 "</div>"+
                 "</div>"
 
              $('#badge-description').append(example_string);
 
 
-             $('#badge-description').css('opacity','1');
-             console.log(key);
+             $('#badge-description').css('opacity','.9');
+             //console.log(key);
 
 
         }).on("mouseout", function(){
