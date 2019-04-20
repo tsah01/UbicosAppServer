@@ -47,7 +47,7 @@ $(function(){
 var dashboard = function(){
 
     //
-    $(".day1ka").click(function(){
+    $(".dashboard_ka").click(function(){
         //get the activity id
         var dashboard_ka_id = $(this).data("dashboard-ka-id");
         //console.log(dashboard_ka_id);
@@ -67,7 +67,7 @@ var dashboard = function(){
         })
         //update the div with table
         var table = $('<table></table>').addClass('dashboard-table');
-        table.append("<tr><td style='width:100px;'>user name</td><td style='width:50px;'>total posts</td><td>response</td></tr>");
+        table.append("<tr><td style='width:100px;'>User Name</td><td style='width:50px;'>Total Count</td><td>Student Response</td></tr>");
         $.each(ka_table_info, function(i, word) {
             console.log(word['response'])
 
@@ -79,7 +79,7 @@ var dashboard = function(){
          $("#dashboard-table").append(table);
     })
 
-    $(".day1gallery").click(function(){
+    $(".dashboard_gallery").click(function(){
         //get the activity id
         var dashboard_gid = $(this).data("dashboard-gid");
 
@@ -99,11 +99,11 @@ var dashboard = function(){
 
         //update the div with table
         var table = $('<table></table>').addClass('dashboard-table');
-        table.append("<tr><td style='width:100px;'>user name</td><td style='width:50px;'>image id</td><td>response</td></tr>");
+        table.append("<tr><td style='width:100px;'>User Name</td><td style='width:50px;'>Total Count</td><td>Student Response</td></tr>");
         $.each(gallery_table_info, function(i, word) {
             console.log(word['response'])
 
-            var markup = "<tr><td>" + word['posted_by'] + "</td><td style='width:50px;'>" + word['image_id'] + "</td><td>" + word['comments'] + "</td></tr>";
+            var markup = "<tr><td>" + word['posted_by'] + "</td><td style='width:50px;'>" + word['count'] + "</td><td>" + word['comments'] + "</td></tr>";
             table.append(markup);
 
           });

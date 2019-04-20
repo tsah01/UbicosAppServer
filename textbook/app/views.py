@@ -556,6 +556,7 @@ def randomDiscussionList(request):
     return JsonResponse({'list': middlegroup_id_list})
 
 
+# projection gallery dashboard
 def dashboardGalleryInfo(request):
     gallery_id = 1;
 
@@ -667,9 +668,6 @@ def getKAPerKAID(request,ka_id):
     ka_items = khanAcademyAnswer.objects.filter(ka_id__in=[ka_id, str(plusone)]).order_by('posted_by__username') #posted by is the foreign key, so it was sorting based on the
                                                                                             #id, posted_by__username sorts alphabetically.
 
-    ka_items_json = serializers.serialize('json', ka_items, use_natural_foreign_keys=True)
-    #print(ka_items_json)
-
     #user id who posted
     userid_list = [User.objects.get(pk=user['posted_by_id']).get_username() for user in khanAcademyAnswer.objects.values('posted_by_id').distinct()]
     #print(userid_list)
@@ -727,6 +725,9 @@ def getGalleryPerID(request,gid):
     #gives the raw query object
     images = imageModel.objects.filter(gallery_id=gid)
 
+    # user id who posted
+    userid_list = []
+    # image id list for this particular gallery
     image_list = []
     for im in images:
         comment_count_list = []
@@ -734,11 +735,26 @@ def getGalleryPerID(request,gid):
         item = {}
         item['image_id'] = im.pk
         item['posted_by'] = im.posted_by.get_username()
+        userid_list.append(item['posted_by'])
         image_comments = imageComment.objects.filter(imageId = im.pk)
         item['comments'] = [im.content for im in image_comments]
+        item['count'] = len(item['comments'])
         image_list.append(item)
 
-    print(image_list)
+    #print(image_list)
+    # find users who did not post
+    users_did_not_post = [x for x in getAllUserList() if x not in userid_list]
+
+    for user in users_did_not_post:
+        item = {}
+        item['image_id'] = 0;
+        item['posted_by'] = user;
+        item['comments'] = []
+        item['count'] = 0
+        image_list.append(item)
+
+    # sort list by their counts
+    image_list = sorted(image_list, key=lambda k: k['count'])
 
     return JsonResponse({'success': image_list});
 
