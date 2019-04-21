@@ -739,8 +739,6 @@ var openImageView = function(galleryView, image){
     $('.section').children('img').remove();
     $('.section').remove('#gallery-image-user-name');
 
-
-
     $('.section', singleImageViewer).append(image);
 
     //get image location from image object
@@ -814,8 +812,18 @@ var openImageView = function(galleryView, image){
 
 
     //now add the name
-    //$('.section').append('<div id="gallery-image-user-name"><b> Group '+ get_user_group_id + ' </b> <font color="#a8aaad"> timestamp</font></div>');
-    $('.section').append('<div id="gallery-image-user-name"><b> Group '+ groupArray[get_user_group_id-1] + ' </b> </div>');
+    if ($('#gallery-image-user-name').length === 0) {
+        // code to run if it isn't there
+        $('.section').append('<div id="gallery-image-user-name"><b> Group '+ groupArray[get_user_group_id-1] + ' </b> </div>');
+    }
+
+    //add instruction
+
+    if($('.gallery-instruction').length === 1){
+        $('.gallery-instruction').text("this is where the instruction will go")
+    }
+
+
 
     //with each click update the input
     $('.section input[name="image-db-pk"]').attr('value', imageID)

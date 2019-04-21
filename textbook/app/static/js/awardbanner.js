@@ -146,7 +146,7 @@ var badge_dict_prompt_copy = {'suggestion': 'Next time try ...',
 
         }).on("mouseout", function(){
             //$('#badge-description').css('opacity','0');
-            clearTimeout(setTimeoutConst );
+            //clearTimeout(setTimeoutConst );
 
         });
     }
