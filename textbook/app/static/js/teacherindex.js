@@ -174,7 +174,7 @@ var initStage = function(){
 
         //lastOpenedTool variable is set in digTextbook.js when card tool is selected
         if(lastOpenedTool === 'khan_academy'){
-            alert('last opened tool was khan academy');
+            //alert('last opened tool was khan academy');
             //hide other div except khan academy
             $(".verticalDivider").show();
             $(".verticalDivider").siblings().hide();
@@ -183,34 +183,34 @@ var initStage = function(){
             $('.ka-projection-number-display-1').text('3');
             $('.ka-projection-number-display-2').text('5');
         }if(lastOpenedTool === 'gallery'){
-            alert('last opened tool was gallery');
+            //alert('last opened tool was gallery');
             //hide other div except gallery
             $(".gallery_middle").show()
             $(".gallery_middle").siblings().hide();
             $(".teacher-view").css("display", "block");
-            var  list;
-             $.ajax({
-                type:'GET',
-                url:'http://'+ host_url +'/dashboardGalleryInfo', //fetches number of groups, their user list and total number of comments
-                async: false, //wait for ajax call to finish, else logged_in is null in the following if condition
-                success: function(e){
-                    list = e.list
-                    console.log(e.list);
-                }
-            });
-            //update a table with information from the list
-            $(".gallery_middle").empty();
-            var table = $('<table></table>')//.addClass('dashboard-table');
-            table.append("<tr><td style='width:100px;'>group id</td><td style='width:50px;'>total posts</td><td>response</td></tr>");
-            $.each(list, function(i, word) {
-                //console.log(word['response'])
-
-                var markup = "<tr><td>" + word['group_id'] + "</td><td style='width:50px;'>" + word['user_list'] + "</td><td>" + word['total_comment'] + "</td></tr>";
-                table.append(markup);
-
-              });
-
-            $(".gallery_middle").append(table);
+//            var  list;
+//             $.ajax({
+//                type:'GET',
+//                url:'http://'+ host_url +'/dashboardGalleryInfo', //fetches number of groups, their user list and total number of comments
+//                async: false, //wait for ajax call to finish, else logged_in is null in the following if condition
+//                success: function(e){
+//                    list = e.list
+//                    console.log(e.list);
+//                }
+//            });
+//            //update a table with information from the list
+//            $(".gallery_middle").empty();
+//            var table = $('<table></table>')//.addClass('dashboard-table');
+//            table.append("<tr><td style='width:100px;'>group id</td><td style='width:50px;'>total posts</td><td>response</td></tr>");
+//            $.each(list, function(i, word) {
+//                //console.log(word['response'])
+//
+//                var markup = "<tr><td>" + word['group_id'] + "</td><td style='width:50px;'>" + word['user_list'] + "</td><td>" + word['total_comment'] + "</td></tr>";
+//                table.append(markup);
+//
+//              });
+//
+//            $(".gallery_middle").append(table);
 
 
         }
