@@ -2,12 +2,31 @@
 <h1>  </h1>
 <h4> </h4>
 <div>
-    <!--page 5 input div-->
-    <div id="user-input-page5-input1">
-        <p> Predict the order of the volume from least to greatest - which one could you fill with the most “stuff”? Least? </p>
-        <textarea class="user-answer-input" rows="4" cols="50" name="page5-input1" required> </textarea> <br/><br/>
-        <input id="page5-input1" type="submit" value="Submit" class="user-input-submit-button">
+
+    <div id="nested-circle">
+        <p> Look at the nested circle image, and fill in the textboxes. </p>
+        <img src="{% static 'pics/nestedcircle.jpg' %}" height="300" width="300" style="margin-left:150px">
+
+        <br/>
+        <label>Label X: </label>
+        <textarea class="user-answer-input" rows="2" cols="50" name="nested-circle-x" required> </textarea>
+
+        <label>Label Y: </label>
+        <textarea class="user-answer-input" rows="2" cols="50" name="nested-circle-y" required> </textarea>
+
+        <label>Label Z: </label>
+        <textarea class="user-answer-input" rows="2" cols="50" name="nested-circle-z" required> </textarea>
+
+
+        <input id="nested-circle-submit" type="submit" value="Submit" class="user-input-submit-button">
     </div>
+
+    <!--page 5 input div-->
+    <!--<div id="user-input-page5-input1">-->
+        <!--<p> Predict the order of the volume from least to greatest - which one could you fill with the most “stuff”? Least? </p>-->
+        <!--<textarea class="user-answer-input" rows="4" cols="50" name="page5-input1" required> </textarea> <br/><br/>-->
+        <!--<input id="page5-input1" type="submit" value="Submit" class="user-input-submit-button">-->
+    <!--</div>-->
 
      <!--page 7 input divs (4)-->
 

@@ -454,9 +454,9 @@ var bindActivityButtons = function(){
 
             }else{
                 //if problem list - then hide the answer description and heading
-                $('.card.' + type + ' h1').text('Answer Questions');
+                $('.card.' + type + ' h1').text('Nested Circle');
 
-                $('.card.' + type + ' h4').text('Type your answers to the questions below. When you are done, hit submit. ');
+                //$('.card.' + type + ' h4').text('Type your answers to the questions below. When you are done, hit submit. ');
 
                 //update description
             }
