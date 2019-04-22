@@ -131,7 +131,7 @@ var badge_dict_prompt_copy = {'suggestion': 'Next time try ...',
 
                 $('#badge-description').append("<p id = 'badge_descrip'>"+badge_dict_description[display]+".</p>");
 
-                $('#badge-description').append("<p id = 'badge_example'>"+badge_dict_example[display]+".</p>");
+                $('#badge-description').append("<p id = 'badge_example' style='font-style:italic;'>"+badge_dict_example[display]+".</p>");
 
                 var example_string =  "<div id='talkmoves-copy'><p id = 'badge_example' style='visibility: hidden;float: left;'>"+badge_dict_prompt_copy[display]+".</p>"+
                "<div class='tm-row'><input id='tm-row-copy-button' type='button' name='1' value='Copy' class='bannercopy'>"+

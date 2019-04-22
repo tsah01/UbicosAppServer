@@ -820,7 +820,15 @@ var openImageView = function(galleryView, image){
     //add instruction
 
     if($('.gallery-instruction').length === 1){
-        $('.gallery-instruction').text("this is where the instruction will go")
+        if(parseInt(activity_id) === 1 ){
+            $('.gallery-instruction').html("What is the rate of change for each graph?<br>What does a rate of change on a graph mean?<br>What does it mean specifically for this graph?<br>What did we discover?");
+        }
+        else if(parseInt(activity_id) === 3 ){
+            $('.gallery-instruction').html("Which functions were proportional and how did you know?<br>Which relationships were non-proportional functions?<br>What do you think makes it a function even if it’s not proportional?<br>Can you agree on a definition of a function?");
+        }else{
+            $('.gallery-instruction').text("")
+        }
+        //$('.gallery-instruction').text("this is where the instruction will go")
     }
 
 

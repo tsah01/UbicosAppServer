@@ -9,7 +9,7 @@ var keywords_obj = new Object();
     keywords_obj.cocon="based on your idea,compare your answer to my answer,you did,like your,you did,you have done";
 
 var badge_dict = {'suggestion': 'Suggestion', 'social' : 'Good Citizen', 'relevance' : 'Relevant Post', 'reflection' : 'Good Communication',
-'ques' : 'Question', 'feedback' : 'Feedback', 'explanation' : 'Good Explanation', 'cocon': 'Co-Construction'};
+'ques' : 'Question', 'feedback' : 'Feedback', 'explanation' : 'Good Explanation', 'cocon': 'Creative Collaboration'};
 
 var keywords_json = JSON.stringify(keywords_obj);
 
