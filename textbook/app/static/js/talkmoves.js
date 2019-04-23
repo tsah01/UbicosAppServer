@@ -25,6 +25,9 @@ var copy_tm_text_button = function(value){
             document.execCommand("copy");
             $('div#talkmoves-copy').find("#selVal").remove();
 
+            //set to input field in chat
+            $('write-message#msg-text').val(copied_text)
+
             //alert("Copied the text: " + copied_text);
 
             //set to the message input box

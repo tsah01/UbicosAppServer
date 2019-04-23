@@ -81,31 +81,31 @@ function displayAllBadges(){
 
   }
 
-var badge_dict_description = {'suggestion': 'You get this badge when you provide suggestion',
-'social' : 'You get this badge when you are social',
-'relevance' : 'You get this badge when you post something related to the topic',
-'reflection' : 'You get this badge when you explain your understanding',
+var badge_dict_description = {'suggestion': 'You get this badge when you provide a hint to others.',
+'social' : 'You get this badge when you appreciate others\' effort',
+'relevance' : 'You get this badge when you make a post related to the topic',
+'reflection' : 'You get this badge when you explain your understanding to others',
 'ques' : 'You get this badge when you ask a question',
 'feedback' : 'You get this badge when you provide a feedback',
-'explanation' : 'You get this badge when you provide explanation',
-'cocon': 'You get this badge posting comment based on others comment'};
+'explanation' : 'You get this badge when you provide an explanation',
+'cocon': 'You get this badge by providing comment on others\' contribution'};
 
-var badge_dict_example = {'suggestion': 'Next time try multiplication..',
-'social' : 'Good job on the board we got the same answers on our board.',
+var badge_dict_example = {'suggestion': 'Next time try ...',
+'social' : 'Good job ...',
 'relevance' : 'The shape of the circle...',
 'reflection' : 'I agree/disagree to your answer because....',
-'ques' : 'What do you mean by that?',
-'feedback' : 'The solution posted here are great..',
-'explanation' : 'I think that this point is important, because…',
-'cocon': 'If I compare your answer to my answer, I think....'};
+'ques' : 'What do you mean by ... ?',
+'feedback' : 'I think your answer is wrong because...',
+'explanation' : 'I think... because...',
+'cocon': 'You did... but another way to do it is...'};
 
 var badge_dict_prompt_copy = {'suggestion': 'Next time try ...',
-'social' : 'Thank you...',
+'social' : 'Good job ...',
 'relevance' : 'The shape of the circle...',
 'reflection' : 'I agree/disagree to your answer because....',
-'ques' : 'Why did you...instead of...?',
-'feedback' : 'The solution posted here are great..',
-'explanation' : 'I think...because...',
+'ques' : 'What do you mean by ... ?',
+'feedback' : 'I think your answer is wrong because...',
+'explanation' : 'I think... because...',
 'cocon': 'You did... but another way to do it is...'};
 
   function hoverBadge(){
