@@ -39,7 +39,15 @@ $(function(){
 
     $('.extend-card').on('touch click', function(){
 
-        card_extension();
+        var width = $(".card").width() / $('.card').parent().width() * 100
+        width = width/2;
+        console.log('width ::', width);
+
+        if (width == 50){
+            $('.card').css({'width':'100%'});
+        }else{
+            $('.card').css({'width':'50%'});
+        }
 
         var classNameWhichisExtended = $(this).offsetParent()[0].className.split(" ")[1]
         enterLogIntoDatabase('card extend', classNameWhichisExtended, 'none', current_pagenumber)
@@ -561,6 +569,7 @@ var card_extension = function(){
 
     var width = $(".card").width() / $('.card').parent().width() * 100
     width = width/2;
+    console.log('width ::', width);
 
     if (width == 50){
         $('.card').css({'width':'100%'});

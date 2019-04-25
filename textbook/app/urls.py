@@ -26,6 +26,7 @@ urlpatterns = [
     url('updateImageFeed/(?P<img_id>\d+)', views.updateImageFeed),
     url('gallery/del/(?P<img_id>\d+)', views.imageDelete),
     url('getGalleryPerID/(?P<gid>\d+)', views.getGalleryPerID),
+    url('getRandomGroupMemberList/(?P<gallery_id>\d+)', views.getRandomGroupMemberList),
     #url('brainstorm/save/',views.brainstormSave),
     url('brainstorm/save/',views.broadcastBrainstormNote),
     url('brainstorm/get/(?P<brainstorm_id>\d+)',views.brainstormGet),

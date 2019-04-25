@@ -255,7 +255,12 @@ def getImage(request, view_id, gallery_id,group_id):
 
     image_data = serializers.serialize('json', images, use_natural_foreign_keys=True)
     #print(image_data)
-    return JsonResponse({'success': image_data})
+    #get and send random group information here
+
+    random_group_list = getRandomGroupMemberList(request, gallery_id)
+    random_group_list.remove('AW')  # remove simply removes the item, does not return anything. so print the list again
+    
+    return JsonResponse({'success': image_data, 'random_group_list':random_group_list})
 
 def getImageID(request,img_filename):
     print('receiving parameter :: file name :: ' + img_filename);
@@ -576,7 +581,7 @@ def dashboardGalleryInfo(request):
         info_query = random_group_users.objects.filter(gallery_id=gallery_id).filter(group=group_id)
 
         # store user list for this group for this gallery
-        #  get the user id from the users table and get their username
+        # get the user id from the users table and get their username
 
         temp = [User.objects.get(pk=e.users_id).get_username() for e in info_query]
         temp.remove('AW') #remove simply removes the item, does not return anything. so print the list again
@@ -590,8 +595,22 @@ def dashboardGalleryInfo(request):
         list.append(dict);
 
     #print([q["fields"] for q in info_query])
-    return JsonResponse({'list': list})
+    #return JsonResponse({'list': list})
+    return HttpResponse(list)
 
+def getRandomGroupMemberList(request, gallery_id):
+
+    # get the group for the user for specific gallery
+    random_group_id = random_group_users.objects.filter(gallery_id=gallery_id).filter(users_id=request.user).values('group')
+    for o in random_group_id: random_group_id = o['group']
+
+    #get the user list - this returns a query object
+    random_list = random_group_users.objects.filter(gallery_id=gallery_id).filter(group=random_group_id)
+
+    #convert the query list into a list
+    random_group_list = [User.objects.get(pk=o.users_id).get_username() for o in random_list]
+
+    return random_group_list;
 
 def updateDiscussionImageFeed(request, gallery_id):
 
