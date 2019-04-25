@@ -39,17 +39,16 @@ function displayAllBadges(){
     getBadgesFromDB();
     //badges = ["social", "ques"];
 
-    var src = $("#award-holder");
+    var src = $(".award-holder");
 
     for(var i = 0; i < badges.length; i++){
         dict[badges[i]] = true;
     }
 
     for(var key in dict){
-        var divBnrHeader = $('<div style="margin-left:150px;"></div>');
-        $(src).append(divBnrHeader);
+        var divBnrHeader = $('<div class = "badge-header" style="margin-left:150px"></div>');
 
-        var divBnr = $('<div style="float:left"></div>');
+        var divBnr = $('<div class = "badge-divide" style="float:left"></div>');
         $(divBnrHeader).append(divBnr)
 
 
@@ -59,24 +58,24 @@ function displayAllBadges(){
         var img = document.createElement("img");
 
         if(dict[key])
-            var img = $('<img/>', { id: key, src : 'http://'+ host_url + "/static/pics/" + key + ".png" }).css({"width":"30px", "margin-right": "5px", "margin-left": "5px"}).appendTo(divBnr);
+            var img = $('<img/>', { class: key, src : 'http://'+ host_url + "/static/pics/" + key + ".png" }).css({"width":"30px","height": "50px", "margin-right": "5px", "margin-left": "5px"}).appendTo(divBnr);
             //img.appendTo(imgDivBnr);
         else
-            var img = $('<img/>', { id: key,  src : 'http://'+ host_url + "/static/pics/" + "blank" + ".png" }).css({"width":"30px", "margin-right": "5px", "margin-left": "5px"}).appendTo(divBnr);
+            var img = $('<img/>', { class: key,  src : 'http://'+ host_url + "/static/pics/" + "blank" + ".png" }).css({"width":"30px", "height": "50px","margin-right": "5px", "margin-left": "5px"}).appendTo(divBnr);
             //img.appendTo(imgDivBnr);
+
+        $(src).append(divBnrHeader);
     }
 
     hoverBadge();
    // src.append("</center>");
-
-
   }
 
   function clearBadges(){
 
     for(var key in dict){
     //console.log("remove badge" + key);
-    $('img#' + key).remove();
+    $('img.' + key).remove();
     }
 
   }
@@ -116,37 +115,49 @@ var badge_dict_prompt_copy = {'suggestion': 'Next time try ...',
         //$('#badge-description').show();
 
         //$("img#"+key).on("mouseover", function () {
-        $("img#"+key).on("mouseenter", function () {
 
-               $('#badge-description').show();
-               $('#badge-description').empty();
-                var display = $(this).attr('id');
-                var badge_descript = $('#badge-description');
+        $("img."+key).on("mouseenter", function () {
+             //stuff to do on mouseover
+             //alert('here') //works
+             //$('#badge-description').children('img').remove();
+             var banner = $($(this).parents('.award-holder'));
+             var descript = $(banner).children('.badge-description');
 
-                $('#badge-description').append("<span onclick=this.parentElement.style.display='none' class='topright'>&times</span>")
 
-                var img = $('<img/>', { id: display, src : 'http://'+ host_url + "/static/pics/" + display + ".png" }).css({"width":"50px", "margin-right": "5px", "margin-left": "5px"}).appendTo(badge_descript);
+             $(descript).show();
+             $(descript).empty();
+             var display = $(this).attr('class');
+             var badge_descript = $(descript);
 
-                $('#badge-description').append("<p id = 'badge_name'>" + badge_dict[display] + "</p>");
+            $(descript).append("<span onclick=this.parentElement.style.display='none' class='topright'>&times</span>")
 
-                $('#badge-description').append("<p id = 'badge_descrip'>"+badge_dict_description[display]+".</p>");
+             var img = $('<img/>', { class: display, src : 'http://'+ host_url + "/static/pics/" + display + ".png" }).css({"width":"50px","height": "80px", "margin-right": "5px", "margin-left": "5px"}).appendTo(badge_descript);
 
-                $('#badge-description').append("<p id = 'badge_example' style='font-style:italic;'>"+badge_dict_example[display]+".</p>");
 
-                var example_string =  "<div id='talkmoves-copy'><p id = 'badge_example' style='visibility: hidden;float: left;'>"+badge_dict_prompt_copy[display]+".</p>"+
-               "<div class='tm-row'><input id='tm-row-copy-button' type='button' name='1' value='Copy' class='bannercopy'>"+
+             $(descript).append("<p class = 'badge_name'>" + badge_dict[display] + "</p>");
+
+             $(descript).append("<p class = 'badge_descrip'>"+badge_dict_description[display]+".</p>");
+
+
+              $(descript).append("<p class = 'badge_example' style='font-style:italic;'>"+badge_dict_example[display]+".</p>");
+
+                var example_string =  "<div class='talkmoves-copy'><p class = 'badge_example' style='visibility: hidden;float: left;'>"+badge_dict_prompt_copy[display]+".</p>"+
+               "<div class='tm-row'><input class='tm-row-copy-button' type='button' name='1' value='Copy' class='bannercopy'>"+
                 "</div>"+
                 "</div>"
 
-                 $('#badge-description').append(example_string);
-                 $('#badge-description').css('opacity','.9');
 
+                 $(descript).append(example_string);
+                 $(descript).css('opacity','.9');
+
+             console.log(key);
 
 
 
         }).on("mouseout", function(){
             //$('#badge-description').css('opacity','0');
             //clearTimeout(setTimeoutConst );
+
 
         });
     }
