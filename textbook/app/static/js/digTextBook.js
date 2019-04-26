@@ -215,11 +215,9 @@ var loadPage = function(pageNum, pageContainer, successFn, notFoundFn){
         function(data){
 
             var pageHTML = $(data) //convert data into jquery object
-
             //console.log(pageHTML)
 
             if($('img', pageHTML)){
-
                 var imgsrc = $('img', pageHTML).attr('src') //get the image src from the html i.e. '/act2/1.png'
                 $('img', pageHTML).attr('src', API_URL.picsBase + imgsrc); //append the base url in the front
             }
@@ -455,14 +453,27 @@ var bindActivityButtons = function(){
             $('#'+id).show();
 
             var divid = '#'+id
+            console.log('line 456',divid)
 
-            if(divid === '#page6-table'){
-                $('.card.' + type + ' h1').text('Chart');
-                $('.card.' + type + ' h4').text(' ');
+            if(divid === '#nested-circle'){
+                 $('.card.' + type + ' h1').text('Nested Circle');
 
-            }else{
-                //if problem list - then hide the answer description and heading
-                $('.card.' + type + ' h1').text('Nested Circle');
+            }else{ //divid === #day2hw
+                $('.card.' + type + ' h1').text('HomeWork Problem');
+                //check user logged in
+                if(logged_in === 'fish' || logged_in === 'giraffe' || logged_in === 'raccoon'){
+                    $('.card.' + type + ' h4').text('Group 1');
+                    $('#day2group1').show();
+
+                }else if(logged_in === 'sheep' || logged_in === 'ant' || logged_in === 'tiger'){
+                     $('.card.' + type + ' h4').text('Group 2');
+                     $('#day2group2').show();
+                }else if(logged_in === 'deer' || logged_in === 'panda' || logged_in === 'liger'){
+                     $('.card.' + type + ' h4').text('Group 3');
+                     $('#day2group3').show();
+                }
+
+
 
                 //$('.card.' + type + ' h4').text('Type your answers to the questions below. When you are done, hit submit. ');
 
@@ -470,12 +481,6 @@ var bindActivityButtons = function(){
             }
 
 
-
-
-
-
-
-            //TODO: call loadHTML() from here
 
             //if the card is already extended, put it back to normal
             card_extension_close();

@@ -259,7 +259,7 @@ def getImage(request, view_id, gallery_id,group_id):
 
     random_group_list = getRandomGroupMemberList(request, gallery_id)
     random_group_list.remove('AW')  # remove simply removes the item, does not return anything. so print the list again
-    
+
     return JsonResponse({'success': image_data, 'random_group_list':random_group_list})
 
 def getImageID(request,img_filename):
@@ -884,9 +884,9 @@ def groupAdd(request):
     users_list = [str(user) for user in User.objects.all()]
     print(len(users_list))
 
-    usernames_array = ["panda", "liger", "sheep", "fox", "leopard", "zebra", "bat", "dog", "squirrel", "dolphin", "elephant", "tiger",
-                       "fish", "frog", "monkey", "ant", "kangaroo", "rabbit","bear", "duck", "hippo", "giraffe", "bee", "eagle",
-                       "deer", "penguin", "alligator", "raccoon", "lion", "AW", "user1", "user2"];
+    usernames_array = ["fish", "giraffe", "raccoon", "ant", "tiger", "sheep", "deer", "panda", "liger", "fox", "hippo", "alligator",
+                       "dog", "dolphin", "eagle", "zebra", "rabbit", "bear","monkey", "leopard", "frog", "squirrel", "elephant", "bee",
+                       "duck", "bat", "kangaroo", "penguin", "lion", "AW", "user1", "user2"];
 
 
     # for username in users_list:
