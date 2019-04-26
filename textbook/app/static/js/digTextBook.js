@@ -320,8 +320,10 @@ var bindActivityButtons = function(){
         if($('.card.table').hasClass('active')){
               lastOpenedTool = 'table';
 
+
+
              $('input[name="table-id"]').attr('value', id)
-             $('.card.' + type + ' h1').text('Data #' +id );
+             $('.card.' + type + ' h1').text(activityButton.attr('data-heading'));
 
               //persistence checker and populate or clear the table according to that
 
@@ -456,7 +458,7 @@ var bindActivityButtons = function(){
             console.log('line 456',divid)
 
             if(divid === '#nested-circle'){
-                 $('.card.' + type + ' h1').text('Nested Circle');
+                 $('.card.' + type + ' h1').text('Vocabulary Graphic Organizer');
 
             }else{ //divid === #day2hw
                 $('.card.' + type + ' h1').text('HomeWork Problem');

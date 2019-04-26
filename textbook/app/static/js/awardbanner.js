@@ -81,31 +81,33 @@ function displayAllBadges(){
   }
 
 var badge_dict_description = {'suggestion': 'You get this badge when you provide a hint to others.',
-'social' : 'You get this badge when you appreciate others\' effort',
+'social' : 'You get this badge when you are helpful, nice, and polite',
 'relevance' : 'You get this badge when you make a post related to the topic',
 'reflection' : 'You get this badge when you explain your understanding to others',
 'ques' : 'You get this badge when you ask a question',
-'feedback' : 'You get this badge when you provide a feedback',
+'feedback' : 'You get this badge when you provide feedback on someone else\'s work.',
 'explanation' : 'You get this badge when you provide an explanation',
 'cocon': 'You get this badge by providing comment on others\' contribution'};
 
 var badge_dict_example = {'suggestion': 'Next time try ...',
 'social' : 'Good job ...',
-'relevance' : 'The shape of the circle...',
-'reflection' : 'I agree/disagree to your answer because....',
+'relevance' : 'This reminds me of ...',
+'reflection' : 'I agree/disagree with your answer, because....',
 'ques' : 'What do you mean by ... ?',
 'feedback' : 'I think your answer is wrong because...',
-'explanation' : 'I think... because...',
+'explanation' : 'I think that... This is because...',
 'cocon': 'You did... but another way to do it is...'};
 
 var badge_dict_prompt_copy = {'suggestion': 'Next time try ...',
 'social' : 'Good job ...',
-'relevance' : 'The shape of the circle...',
-'reflection' : 'I agree/disagree to your answer because....',
+'relevance' : 'This reminds me of ...',
+'reflection' : 'I agree/disagree with your answer, because....',
 'ques' : 'What do you mean by ... ?',
 'feedback' : 'I think your answer is wrong because...',
-'explanation' : 'I think... because...',
+'explanation' : 'I think that... This is because...',
 'cocon': 'You did... but another way to do it is...'};
+
+
 
   function hoverBadge(){
 

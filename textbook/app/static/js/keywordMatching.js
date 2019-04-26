@@ -1,10 +1,11 @@
+var keyword_relevance = "sphere,cone,cylinder,area,volume,hemisphere,radius,diameter,circumference,pi,surface area";
+var keyword_social = "thanks,thank you,thankyou,love it,good job,great job,great";
+
 var keywords_obj = new Object();
-    keywords_obj.social = "thanks,thank you,thankyou,love it,good job,great job,great";
     keywords_obj.explanation="because,cause,would be,but,since,for example,an example";
     keywords_obj.feedback = "correct,incorrect,correct answer,incorrect answer,right answer,didnt understand,did not understand,i understand";
     keywords_obj.suggestion = "i think,should,could be,try";
     keywords_obj.ques= "how,what,where,why,can you,can,did,do,does";
-    keywords_obj.relevance = "sphere,cone,cylinder,area,volume,hemisphere,radius,diameter,circumference,pi,surface area";
     keywords_obj.reflection="i agree,i disagree,confused";
     keywords_obj.cocon="based on your idea,compare your answer to my answer,you did,like your,you did,you have done";
 
@@ -14,22 +15,43 @@ var badge_dict = {'suggestion': 'Suggestion', 'social' : 'Good Citizen', 'releva
 var keywords_json = JSON.stringify(keywords_obj);
 
  $('.prompt-close-card').on('touch click', function(){
-
         $(this).closest('.prompt-card').removeClass('active');
-
     });
 
 
+function auxMethod_displayBadgePrompt(platform,index,message){
+
+        if(platform === 'ka'){
+            $('.prompt-card.prompt-ka').addClass('active');
+            $('#prompt-badge-img-ka').attr('src','/static/pics/'+index+'.png');
+            $('p#prompt-p-ka').text("You earned a " + badge_dict[index] + " badge!");
+        }else if(platform === 'gallery'){
+            $('.prompt-card.prompt').addClass('active');
+            $('#prompt-badge-img').attr('src','/static/pics/'+index+'.png');
+            $('p#prompt-p').text("You earned a " + badge_dict[index] + " badge!");
+        }else{
+            $('.prompt-card.prompt-gm').addClass('active');
+            $('#prompt-badge-img-gm').attr('src','/static/pics/'+index+'.png');
+            $('p#prompt-p-gm').text("You earned a " + badge_dict[index] + " badge!");
+        }
+
+        //insert the badge in the database
+         insertBadgeIngoinDB(message, index);
+         displayAllBadges();
+         //getBadgesFromDB();
+
+         enterLogIntoDatabase('display prompt', 'badge:'+index , message, current_pagenumber);
+
+}
+
 function showPrompt(message, platform){
 
+    //get the length of the message
     var msg = message.split(" ");
     var lengthOfMsg = msg.length;
-    //console.log('message length :: ', lengthOfMsg);
-    //alert(lengthOfMsg.length)
 
-
+    //check the length condition first
     if(lengthOfMsg == 0) return false;
-
 
     if(platform === 'ka'){
         if(lengthOfMsg < 20) return false;//word based
@@ -39,53 +61,104 @@ function showPrompt(message, platform){
 
     message = message.toLowerCase();
 
-    var prompt_text = ''
+    //check for relevance next
+    var regexExactMatchRelevance = new RegExp('\\b' + keyword_relevance.split(",").join("|")+ '\\b');
 
-    //https://www.tjvantoll.com/2013/03/14/better-ways-of-comparing-a-javascript-string-to-multiple-values/
-    //loop through key words
-    $.each(keywords_obj, function(index, keywords) {
-        //console.log(keywords.split(","))
-        //console.log(message)
-
-        var regexExactMatch = new RegExp('\\b' + keywords.split(",").join("|")+ '\\b');
-
-        if(regexExactMatch.test(message)){
-
-            //if question check if the question word is at the beginning of the sentence
-            if(index === 'ques' && regexExactMatch.exec(message).index != 0) return false; //the question keyword is not the beginning so no badge
-
-            //if matches with a badge already received before, return
-            //https://stackoverflow.com/questions/18867599/jquery-inarray-how-to-use-it-right
-            if(jQuery.inArray(index, badges) > -1) return false;
-
-            if(platform === 'ka'){
-                $('.prompt-card.prompt-ka').addClass('active');
-                $('#prompt-badge-img-ka').attr('src','/static/pics/'+index+'.png');
-                $('p#prompt-p-ka').text("You earned a " + badge_dict[index] + " badge!");
-            }else if(platform === 'gallery'){
-                $('.prompt-card.prompt').addClass('active');
-                $('#prompt-badge-img').attr('src','/static/pics/'+index+'.png');
-                $('p#prompt-p').text("You earned a " + badge_dict[index] + " badge!");
-            }else{
-                $('.prompt-card.prompt-gm').addClass('active');
-                $('#prompt-badge-img-gm').attr('src','/static/pics/'+index+'.png');
-                $('p#prompt-p-gm').text("You earned a " + badge_dict[index] + " badge!");
-            }
-
-             //insert the badge in the database
-             insertBadgeIngoinDB(message, index);
-             displayAllBadges();
-             //getBadgesFromDB();
-
-             enterLogIntoDatabase('display prompt', 'badge:'+index , message, current_pagenumber)
-             return false; //one badge at a time.
-
-
+    //if it matches, check further, else check for social
+    if(regexExactMatchRelevance.test(message)) {
+        //since true, check whether the student got relevance badge before
+        //will return -1 if not present in the badges array
+        if(jQuery.inArray("relevance", badges) == -1){
+            //no, give the relevance badge and return
+            auxMethod_displayBadgePrompt(platform,"relevance",message);
+            return false; //one badge at a time.
         }else{
+            //yes, then check for other keywords
+             //https://www.tjvantoll.com/2013/03/14/better-ways-of-comparing-a-javascript-string-to-multiple-values/
+            //loop through key words other than relevance
+            $.each(keywords_obj, function(index, keywords) {
 
+                var regexExactMatch = new RegExp('\\b' + keywords.split(",").join("|")+ '\\b');
+
+                if(regexExactMatch.test(message)){
+
+                    //if question check if the question word is at the beginning of the sentence
+                    if(index === 'ques' && regexExactMatch.exec(message).index != 0) return false; //the question keyword is not the beginning so no badge
+
+                    //if matches with a badge already received before, return
+                    //https://stackoverflow.com/questions/18867599/jquery-inarray-how-to-use-it-right
+                    if(jQuery.inArray(index, badges) > -1) return false;
+
+                    //display badge
+                    auxMethod_displayBadgePrompt(platform,index,message);
+                    return false; //one badge at a time.
+
+                }
+            });
+        }
+    }else{
+        //check for social
+        var regexExactMatchSocial = new RegExp('\\b' + keyword_social.split(",").join("|")+ '\\b');
+
+        if(regexExactMatchSocial.test(message)){
+            //check whether got social before?
+            if(jQuery.inArray("social", badges) == -1){
+            //give the relevance badge and return
+            auxMethod_displayBadgePrompt(platform,"social",message);
+            return false; //one badge at a time.
         }
 
-    });
+
+     }
+    }
+
+
+
+
+
+//    //https://www.tjvantoll.com/2013/03/14/better-ways-of-comparing-a-javascript-string-to-multiple-values/
+//    //loop through key words
+//    $.each(keywords_obj, function(index, keywords) {
+//        //console.log(keywords.split(","))
+//        //console.log(message)
+//
+//        var regexExactMatch = new RegExp('\\b' + keywords.split(",").join("|")+ '\\b');
+//
+//        if(regexExactMatch.test(message)){
+//
+//            //if question check if the question word is at the beginning of the sentence
+//            if(index === 'ques' && regexExactMatch.exec(message).index != 0) return false; //the question keyword is not the beginning so no badge
+//
+//            //if matches with a badge already received before, return
+//            //https://stackoverflow.com/questions/18867599/jquery-inarray-how-to-use-it-right
+//            if(jQuery.inArray(index, badges) > -1) return false;
+//
+//            if(platform === 'ka'){
+//                $('.prompt-card.prompt-ka').addClass('active');
+//                $('#prompt-badge-img-ka').attr('src','/static/pics/'+index+'.png');
+//                $('p#prompt-p-ka').text("You earned a " + badge_dict[index] + " badge!");
+//            }else if(platform === 'gallery'){
+//                $('.prompt-card.prompt').addClass('active');
+//                $('#prompt-badge-img').attr('src','/static/pics/'+index+'.png');
+//                $('p#prompt-p').text("You earned a " + badge_dict[index] + " badge!");
+//            }else{
+//                $('.prompt-card.prompt-gm').addClass('active');
+//                $('#prompt-badge-img-gm').attr('src','/static/pics/'+index+'.png');
+//                $('p#prompt-p-gm').text("You earned a " + badge_dict[index] + " badge!");
+//            }
+//
+//             //insert the badge in the database
+//             insertBadgeIngoinDB(message, index);
+//             displayAllBadges();
+//             //getBadgesFromDB();
+//
+//             enterLogIntoDatabase('display prompt', 'badge:'+index , message, current_pagenumber)
+//             return false; //one badge at a time.
+//
+//
+//        }
+//
+//    });
 
 }
 
