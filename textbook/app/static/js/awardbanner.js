@@ -151,6 +151,8 @@ var badge_dict_prompt_copy = {'suggestion': 'Next time try ...',
 
                  $(descript).append(example_string);
                  $(descript).css('opacity','.9');
+                 $(descript).css('color', 'black');
+
 
              console.log(key);
 

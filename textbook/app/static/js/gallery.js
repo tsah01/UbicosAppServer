@@ -64,6 +64,9 @@ $(function(){
 
     });
 
+    //default instruction for the gallery
+    $('.extendedHeading').text("My Group Submissions");
+
 
      //add event listener to the chat button click
     $("#image-msg-send-btn").off().click(function(e){
@@ -362,6 +365,7 @@ $(function(){
             //back to gallery from single image view
             $("#backToGallery").click(function(e){
                 $("#gallery-image-user-name").remove();
+                $("#gallery-image-group-member").remove();
                 e.preventDefault();
                 enterLogIntoDatabase('back to gallery button click', 'gallery back view click' , 'total photo '+totalPhoto, current_pagenumber)
                 $("#single-image-view").hide()
@@ -735,6 +739,7 @@ var openImageView = function(galleryView, image){
 
     // Get image element and add it to the DOM
     var image = image.clone();
+    image.css({"margin-top":"15px"})
 
     //remove previous single image before adding new one
     $('.section').children('img').remove();
@@ -815,8 +820,8 @@ var openImageView = function(galleryView, image){
     //now add the name
     if ($('#gallery-image-user-name').length === 0) {
         // code to run if it isn't there
-        $('.section').append('<div id="gallery-image-user-name"><b> Group '+ groupArray[get_user_group_id-1] + ' </b> </div>');
-        $('.section').append('<div id="gallery-image-group-member"><b>  '+ random_group_list + ' </b> </div>');
+        $('.section').append('<div id="gallery-image-user-name"><b>Image uploaded by Group '+ groupArray[get_user_group_id-1] + ' </b> </div>');
+        $('.section').append('<div id="gallery-image-group-member"><b>Discussion Group: '+ random_group_list + ' </b> </div>');
 
 
 
@@ -827,14 +832,17 @@ var openImageView = function(galleryView, image){
 
     if($('.gallery-instruction').length === 1){
         if(parseInt(activity_id) === 1 ){
-            $('.gallery-instruction').html("What is the rate of change for each graph?<br>What does a rate of change on a graph mean?<br>What does it mean specifically for this graph?<br>What did we discover?");
+            $('.gallery-instruction').html("Discuss:<br>What is the rate of change for each graph?<br>What does a rate of change on a graph mean?<br>What does it mean specifically for this graph?<br>What did we discover?");
         }
         else if(parseInt(activity_id) === 3 ){
-            $('.gallery-instruction').html("Which functions were proportional and how did you know?<br>Which relationships were non-proportional functions?<br>What do you think makes it a function even if it’s not proportional?<br>Can you agree on a definition of a function?");
+            $('.gallery-instruction').html("Discuss:<br>Which functions were proportional and how did you know?<br>Which relationships were non-proportional functions?<br>What do you think makes it a function even if it’s not proportional?<br>Can you agree on a definition of a function?");
         }else{
             $('.gallery-instruction').text("")
         }
         //$('.gallery-instruction').text("this is where the instruction will go")
+
+        $('.gallery-instruction').css({'margin-bottom':'20px'});
+
     }
 
 
