@@ -884,15 +884,15 @@ def groupAdd(request):
     users_list = [str(user) for user in User.objects.all()]
     print(len(users_list))
 
-    usernames_array = ["fish", "giraffe", "raccoon", "ant", "tiger", "sheep", "deer", "panda", "liger", "fox", "hippo", "alligator",
+    usernames_array = ["giraffe", "raccoon", "ant", "tiger", "sheep", "deer", "panda", "liger", "fox", "hippo", "alligator",
                        "dog", "dolphin", "eagle", "zebra", "rabbit", "bear","monkey", "leopard", "frog", "squirrel", "elephant", "bee",
-                       "duck", "bat", "kangaroo", "penguin", "lion", "AW", "user1", "user2"];
+                       "duck", "kangaroo", "penguin", "fish","bat", "lion", "AW", "user1", "user2"];
 
 
     # for username in users_list:
     #     print(usernames_array.index(username))
 
-    username_groupID = ['1', '1', '1', '2', '2', '2', '3', '3', '3', '4', '4', '4', '5', '5', '5', '6', '6', '6','7', '7',
+    username_groupID = ['1', '1', '2', '2', '2', '3', '3', '3', '4', '4', '4', '5', '5', '5', '6', '6', '6','7', '7',
                         '7', '8', '8', '8', '9', '9', '10', '10', '10', '11', '11', '11']
 
     for i in range(len(usernames_array)):

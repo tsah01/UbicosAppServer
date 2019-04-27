@@ -74,6 +74,47 @@ var getAnswers = function(){
 
     })
 
+    //model of functions input
+    $("#model-of-functions-submit").off().click(function(e){
+
+        //multiple inputs instead of 1, store them in the array
+        var answerArray = [];
+
+        //get the answer from the textbox
+        var answer_one = $("textarea[name='mof-input1']").val();
+        var answer_two = $("textarea[name='mof-input2']").val();
+
+
+
+        //send to user lof db
+
+        //send to database if the answer is not null
+        if(!answer_one.trim() || !answer_two.trim()){
+
+             showErrorMsg();
+
+        }else{
+
+                 //send to db and disable the submit button
+                localStorage.setItem("answer_one", answer_one);
+                localStorage.setItem("answer_one", answer_one);
+
+                //add all the data together
+                answerArray.push(answer_one);
+                answerArray.push(answer_two);
+
+                console.log('answerArray', answerArray);
+
+                 //array of answers, convert to json
+                answerJson = JSON.stringify(answerArray);
+
+                sendUserInputToDB(10, answerJson);
+
+        }
+
+
+    })
+
 
 
 

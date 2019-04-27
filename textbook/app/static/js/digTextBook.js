@@ -17,7 +17,7 @@ window.onerror = function(message, file, line) {
     It is also used in:
     * activityindex.js
 */
-var NUM_PAGES = 13;
+var NUM_PAGES = 17;
 
 
 $(function(){
@@ -459,6 +459,9 @@ var bindActivityButtons = function(){
 
             if(divid === '#nested-circle'){
                  $('.card.' + type + ' h1').text('Vocabulary Graphic Organizer');
+
+            }else if(divid === '#model-of-functions'){
+                $('.card.' + type + ' h1').text('Model of Functions');
 
             }else{ //divid === #day2hw
                 $('.card.' + type + ' h1').text('HomeWork Problem');
