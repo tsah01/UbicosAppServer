@@ -462,19 +462,39 @@ var bindActivityButtons = function(){
 
             }else{ //divid === #day2hw
                 $('.card.' + type + ' h1').text('HomeWork Problem');
+
                 //check user logged in
                 if(logged_in === 'fish' || logged_in === 'giraffe' || logged_in === 'raccoon'){
                     $('.card.' + type + ' h4').text('Group 1');
                     $('#day2group1').show();
-
                 }else if(logged_in === 'sheep' || logged_in === 'ant' || logged_in === 'tiger'){
                      $('.card.' + type + ' h4').text('Group 2');
                      $('#day2group2').show();
                 }else if(logged_in === 'deer' || logged_in === 'panda' || logged_in === 'liger'){
                      $('.card.' + type + ' h4').text('Group 3');
                      $('#day2group3').show();
+                }else if(logged_in === 'fox' || logged_in === 'hippo' || logged_in === 'alligator'){
+                     $('.card.' + type + ' h4').text('Group 4');
+                     $('#day2group3').show();
+                }else if(logged_in === 'dog' || logged_in === 'dolphin' || logged_in === 'eagle'){
+                     $('.card.' + type + ' h4').text('Group 5');
+                     $('#day2group3').show();
+                }else if(logged_in === 'zebra' || logged_in === 'rabbit' || logged_in === 'bear'){
+                     $('.card.' + type + ' h4').text('Group 6');
+                     $('#day2group3').show();
+                }else if(logged_in === 'monkey' || logged_in === 'leaopard' || logged_in === 'frog'){
+                     $('.card.' + type + ' h4').text('Group 7');
+                     $('#day2group3').show();
+                }else if(logged_in === 'squirrel' || logged_in === 'elephant' || logged_in === 'bee'){
+                     $('.card.' + type + ' h4').text('Group 8');
+                     $('#day2group3').show();
+                }else if(logged_in === 'duck' || logged_in === 'bat'){
+                     $('.card.' + type + ' h4').text('Group 9');
+                     $('#day2group3').show();
+                }else if(logged_in === 'kangaroo' || logged_in === 'penguin' || logged_in === 'lion'){
+                     $('.card.' + type + ' h4').text('Group 10');
+                     $('#day2group3').show();
                 }
-
 
 
                 //$('.card.' + type + ' h4').text('Type your answers to the questions below. When you are done, hit submit. ');

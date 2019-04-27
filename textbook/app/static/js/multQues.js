@@ -12,67 +12,63 @@ var isAnswerNull = 0;
 var getAnswers = function(){
 
     //handling persistence - start
-    if(localStorage.getItem("page5input1")){
+    if(localStorage.getItem("answer_x")){
 
-        $('#page5-input1').attr('disabled',true);
-        $("textarea[name='page5-input1']").val(localStorage.getItem("page5input1"))
-
-    }
-
-    if(localStorage.getItem("page7input1")){
-        answer = JSON.parse(localStorage.getItem("page7input1"))
-        //console.log(JSON.parse(localStorage.getItem("page7input1")));
-
-        //$('#page7-input1').attr('disabled',true);
-
-        $("textarea[name='page7-input1']").val(answer[0].answer)
-        $("textarea[name='page7-input2']").val(answer[1].answer)
-        $("textarea[name='page7-input3']").val(answer[1].answer)
+        $("textarea[name='nested-circle-x']").val(localStorage.getItem("answer_x"))
 
     }
+    if(localStorage.getItem("answer_y")){
 
-    if(localStorage.getItem("page7input2")){
-        answer = JSON.parse(localStorage.getItem("page7input2"))
-
-        $('#page7-input2').attr('disabled',true);
-        $("textarea[name='page7-input4']").val(answer[0].answer)
-        $("textarea[name='page7-input5']").val(answer[1].answer)
+        $("textarea[name='nested-circle-y']").val(localStorage.getItem("answer_y"))
 
     }
+    if(localStorage.getItem("answer_z")){
 
-    if(localStorage.getItem("page12input1")){
-        answer = JSON.parse(localStorage.getItem("page12input1"))
-
-        $('#page10-input1').attr('disabled',true);
-        $("textarea[name='page12-input1']").val(answer[0].answer)
-        $("textarea[name='page12-input2']").val(answer[1].answer)
-        $("textarea[name='page12-input3']").val(answer[1].answer)
+        $("textarea[name='nested-circle-z']").val(localStorage.getItem("answer_z"))
 
     }
-
 
      //handling persistence - end
 
-    //page 5 input
-    $("#page5-input1").off().click(function(e){
+    //nested circle input
+    $("#nested-circle-submit").off().click(function(e){
+
+        //multiple inputs instead of 1, store them in the array
+        var answerArray = [];
 
         //get the answer from the textbox
-        var answer = $("textarea[name='page5-input1']").val();
-        //console.log("page5-input1", answer);
+        var answer_x = $("textarea[name='nested-circle-x']").val();
+        var answer_y = $("textarea[name='nested-circle-y']").val();
+        var answer_z = $("textarea[name='nested-circle-z']").val();
+
 
         //send to user lof db
 
         //send to database if the answer is not null
-        if(!answer.trim()){
+        if(!answer_x.trim() || !answer_y.trim() || !answer_z.trim()){
 
              showErrorMsg();
 
         }else{
 
                  //send to db and disable the submit button
-                localStorage.setItem("page5input1", answer);
-                sendUserInputToDB(5, answer);
-                //$('#page5-input1').attr('disabled',true);
+                localStorage.setItem("answer_x", answer_x);
+                localStorage.setItem("answer_y", answer_y);
+                localStorage.setItem("answer_z", answer_z);
+
+
+                //add all the data together
+                answerArray.push(answer_x);
+                answerArray.push(answer_y);
+                answerArray.push(answer_z);
+
+                console.log('answerArray', answerArray);
+
+                 //array of answers, convert to json
+                answerJson = JSON.stringify(answerArray);
+
+                sendUserInputToDB(7, answerJson);
+
         }
 
 
@@ -82,167 +78,59 @@ var getAnswers = function(){
 
 
 
-    //page 7 input1
-    $("#page7-input1").off().click(function(e){
-
-        //multiple inputs instead of 1, store them in the array
-        var answerArray = [];
-
-        //variable used to see if any of the input is empty or not
-        var isAnswerNull = 0;
-
-        //get the answer from the textbox
-        $.each([1,2,3], function(index, value){
-
-            var answer = $("textarea[name='page7-input"+value+"']").val();
-
-            //handle empty input
-            if(!answer.trim()){
-
-                isAnswerNull = 1;
-
-            }else{
-                //add question so its easier to understand which answer refers to which question
-                var temp = {
-                    question: 'page7-input'+value,
-                    answer: answer.trim()
-                }
-
-                answerArray.push(temp);
-            }
-
-        });
-
-        //array of answers, convert to json
-        answerJson = JSON.stringify(answerArray);
-
-        //send to user lof db
-
-        //send to database if the answer is not null
-        if(isAnswerNull == 1){
-
-            showErrorMsg();
-
-            isAnswerNull = 0;
-
-        }else{
-
-            //send to db and disable the submit button
-            sendUserInputToDB(7, answerJson);
-            localStorage.setItem("page7input1", answerJson);
-            //$('#page7-input1').attr('disabled',true);
-
-        }
-
-    })
-
-     //page 7 input2
-    $("#page7-input2").off().click(function(e){
-
-        //multiple inputs instead of 1, store them in the array
-        var answerArray = [];
-
-        //variable used to see if any of the input is empty or not
-        var isAnswerNull = 0;
-
-        //get the answer from the textbox
-        $.each([4,5], function(index, value){
-
-            var answer = $("textarea[name='page7-input"+value+"']").val();
-
-            //handle empty input
-            if(!answer.trim()){
-
-                isAnswerNull = 1;
-
-            }else{
-
-                //add question so its easier to understand which answer refers to which question
-                var temp = {
-                    question: 'page7-input'+value,
-                    answer: answer.trim()
-                }
-
-                answerArray.push(temp);
-            }
-
-        });
-
-        //array of answers, convert to json
-        answerJson = JSON.stringify(answerArray);
-
-        //send to user lof db
-
-        //send to database if the answer is not null
-        if(isAnswerNull == 1){
-
-            showErrorMsg();
-
-            isAnswerNull = 0;
-
-        }else{
-
-            //send to db and disable the submit button
-            sendUserInputToDB(7, answerJson);
-            localStorage.setItem("page7input2", answerJson);
-            //$('#page7-input2').attr('disabled',true);
-
-        }
-
-    })
-
-    //page 12 input1
-    $("#page12-input1").off().click(function(e){
-
-        //multiple inputs instead of 1, store them in the array
-        var answerArray = [];
-
-        //variable used to see if any of the input is empty or not
-        var isAnswerNull = 0;
-
-        //get the answer from the textbox
-        $.each([1,2,3], function(index, value){
-
-            var answer = $("textarea[name='page12-input"+value+"']").val();
-
-            //handle empty input
-            if(!answer.trim()){
-
-                isAnswerNull = 1;
-
-            }else{
-                var temp = {
-                    question: 'page12-input'+value,
-                    answer: answer.trim()
-                }
-                answerArray.push(temp);
-            }
-
-        });
-
-        //array of answers, convert to json
-        answerJson = JSON.stringify(answerArray);
-
-        //send to user lof db
-
-        //send to database if the answer is not null
-        if(isAnswerNull == 1){
-
-            showErrorMsg();
-
-            isAnswerNull = 0;
-
-        }else{
-
-            //send to db and disable the submit button
-            sendUserInputToDB(12, answerJson);
-            localStorage.setItem("page12input1", answerJson);
-            //$('#page10-input1').attr('disabled',true);
-
-        }
-
-    })
-
+//    //page 7 input1
+//    $("#page7-input1").off().click(function(e){
+//
+//        //multiple inputs instead of 1, store them in the array
+//        var answerArray = [];
+//
+//        //variable used to see if any of the input is empty or not
+//        var isAnswerNull = 0;
+//
+//        //get the answer from the textbox
+//        $.each([1,2,3], function(index, value){
+//
+//            var answer = $("textarea[name='page7-input"+value+"']").val();
+//
+//            //handle empty input
+//            if(!answer.trim()){
+//
+//                isAnswerNull = 1;
+//
+//            }else{
+//                //add question so its easier to understand which answer refers to which question
+//                var temp = {
+//                    question: 'page7-input'+value,
+//                    answer: answer.trim()
+//                }
+//
+//                answerArray.push(temp);
+//            }
+//
+//        });
+//
+//        //array of answers, convert to json
+//        answerJson = JSON.stringify(answerArray);
+//
+//        //send to user lof db
+//
+//        //send to database if the answer is not null
+//        if(isAnswerNull == 1){
+//
+//            showErrorMsg();
+//
+//            isAnswerNull = 0;
+//
+//        }else{
+//
+//            //send to db and disable the submit button
+//            sendUserInputToDB(7, answerJson);
+//            localStorage.setItem("page7input1", answerJson);
+//            //$('#page7-input1').attr('disabled',true);
+//
+//        }
+//
+//    })
 
 
 }
