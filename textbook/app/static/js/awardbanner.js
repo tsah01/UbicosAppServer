@@ -94,7 +94,7 @@ var badge_dict_example = {'suggestion': 'Next time try ...',
 'relevance' : 'This reminds me of ...',
 'reflection' : 'I agree/disagree with your answer, because....',
 'ques' : 'What do you mean by ... ?',
-'feedback' : 'I think your answer is wrong because...',
+'feedback' : 'Your answer is wrong because...',
 'explanation' : 'I think that... This is because...',
 'cocon': 'You did... but another way to do it is...'};
 
@@ -103,7 +103,7 @@ var badge_dict_prompt_copy = {'suggestion': 'Next time try ...',
 'relevance' : 'This reminds me of ...',
 'reflection' : 'I agree/disagree with your answer, because....',
 'ques' : 'What do you mean by ... ?',
-'feedback' : 'I think your answer is wrong because...',
+'feedback' : 'Your answer is wrong because...',
 'explanation' : 'I think that... This is because...',
 'cocon': 'You did... but another way to do it is...'};
 

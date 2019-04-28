@@ -1,13 +1,13 @@
-var keyword_relevance = "sphere,cone,cylinder,area,volume,hemisphere,radius,diameter,circumference,pi,surface area";
+var keyword_relevance = "circle,circumference,diameter,rate of change,proportional,proportional relationship,function,linear,linear function,proportional function,linear function,non-linear function";
 var keyword_social = "thanks,thank you,thankyou,love it,good job,great job,great";
 
 var keywords_obj = new Object();
-    keywords_obj.explanation="because,cause,would be,but,since,for example,an example";
+    keywords_obj.explanation="this is because,cause,would be,but,since,for example,an example,because";
     keywords_obj.feedback = "correct,incorrect,correct answer,incorrect answer,right answer,didnt understand,did not understand,i understand";
-    keywords_obj.suggestion = "i think,should,could be,try";
+    keywords_obj.suggestion = "i think,should,could be,try,next time try";
     keywords_obj.ques= "how,what,where,why,can you,can,did,do,does";
     keywords_obj.reflection="i agree,i disagree,confused";
-    keywords_obj.cocon="based on your idea,compare your answer to my answer,you did,like your,you did,you have done";
+    keywords_obj.cocon="based on your idea,compare your answer to my answer,you did,like your,you did,you have done,another way to do";
 
 var badge_dict = {'suggestion': 'Suggestion', 'social' : 'Good Citizen', 'relevance' : 'Relevant Post', 'reflection' : 'Good Communication',
 'ques' : 'Question', 'feedback' : 'Feedback', 'explanation' : 'Good Explanation', 'cocon': 'Creative Collaboration'};
