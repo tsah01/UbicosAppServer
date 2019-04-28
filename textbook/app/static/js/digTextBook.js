@@ -295,7 +295,7 @@ var bindActivityButtons = function(){
 
             var activity_id = activityButton.attr('data-id');
 
-            $('.card.active').removeClass('active');
+            //$('.card.active').removeClass('active');
             $('.card.teacher').addClass('active');
 
             initStage(); //defined in teacherindex.js

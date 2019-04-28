@@ -41,6 +41,12 @@ $(function(){
 
       });
 
+    //teacher card close button
+    $('.teacher-card-close-button').on('click', function(e){
+
+        $(this).closest('.card').removeClass('active');
+    });
+
 
 })
 
@@ -178,6 +184,10 @@ var initStage = function(){
             //hide other div except khan academy
             $(".verticalDivider").show();
             $(".verticalDivider").siblings().hide();
+            //close button display
+            $(".teacher-card-close-button").show();
+
+            //TODO: ajaxk call and get the values and replace the following texts
 
             //display items
             $('.ka-projection-number-display-1').text('3');
@@ -188,6 +198,9 @@ var initStage = function(){
             $(".gallery_middle").show()
             $(".gallery_middle").siblings().hide();
             $(".teacher-view").css("display", "block");
+             //close button display
+            $(".teacher-card-close-button").show();
+
 //            var  list;
 //             $.ajax({
 //                type:'GET',
