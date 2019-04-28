@@ -459,12 +459,17 @@ var bindActivityButtons = function(){
 
             if(divid === '#nested-circle'){
                  $('.card.' + type + ' h1').text('Vocabulary Graphic Organizer');
+                 $('.card.' + type + ' h4').text('');
 
             }else if(divid === '#model-of-functions'){
                 $('.card.' + type + ' h1').text('Model of Functions');
+                $('.card.' + type + ' h4').text('');
 
             }else{ //divid === #day2hw
                 $('.card.' + type + ' h1').text('HomeWork Problem');
+
+
+                $('#homework').show();
 
                 //check user logged in
                 if(logged_in === 'fish' || logged_in === 'giraffe' || logged_in === 'raccoon'){
