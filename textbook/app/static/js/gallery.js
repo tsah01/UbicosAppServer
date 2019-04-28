@@ -918,7 +918,7 @@ function populateTeacherViewDiv(list){
 
     $('.teacher-view').empty();
     $('#gallery-view-only').hide();
-    $('#gallery-group-heading').text('Random Group Lists')
+    $('#gallery-group-heading').text('Digital Discussion Group Lists')
 
     for(var i of list) {
         //can use break;

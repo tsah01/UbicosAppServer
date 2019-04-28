@@ -587,10 +587,10 @@ def randomDiscussionList(request):
 
 
 # projection gallery dashboard
-def dashboardGalleryInfo(request):
-    gallery_id = 1;
+def dashboardGalleryInfo(request,act_id):
+    gallery_id = act_id;
 
-    # get total groups
+    # get total groups for this gallery
     info_query = random_group_users.objects.filter(gallery_id=gallery_id).values('group').distinct()
 
     # convert query into list
@@ -620,8 +620,8 @@ def dashboardGalleryInfo(request):
         list.append(dict);
 
     #print([q["fields"] for q in info_query])
-    #return JsonResponse({'list': list})
-    return HttpResponse(list)
+    return JsonResponse({'list': list})
+
 
 def getRandomGroupMemberList(request, gallery_id):
 

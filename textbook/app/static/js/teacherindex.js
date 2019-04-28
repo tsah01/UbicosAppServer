@@ -228,16 +228,29 @@ var initStage = function(){
              //close button display
             $(".teacher-card-close-button").show();
 
-//            var  list;
-//             $.ajax({
-//                type:'GET',
-//                url:'http://'+ host_url +'/dashboardGalleryInfo', //fetches number of groups, their user list and total number of comments
-//                async: false, //wait for ajax call to finish, else logged_in is null in the following if condition
-//                success: function(e){
-//                    list = e.list
-//                    console.log(e.list);
-//                }
-//            });
+            var  list;
+             $.ajax({
+                type:'GET',
+                url:'http://'+ host_url +'/dashboardGalleryInfo/'+activity_id, //fetches number of groups, their user list and total number of comments
+                async: false, //wait for ajax call to finish, else logged_in is null in the following if condition
+                success: function(e){
+                    list = e.list
+                    console.log(e.list);
+                }
+            });
+            //list -- list of groups with username list and total comments
+
+            $.each(list, function(i, element) {
+
+                //group number -- i+1 TODO
+                var index = i+1;
+                $('#group'+index+'-user-name').text(element['user_list'])
+                $('#group'+index+'-totalcomment').text(element['total_comment'])
+
+
+
+
+            });
 //            //update a table with information from the list
 //            $(".gallery_middle").empty();
 //            var table = $('<table></table>')//.addClass('dashboard-table');
