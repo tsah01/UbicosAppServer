@@ -818,6 +818,37 @@ def getUserList(request):
 def getAllStudentInfo(request,std_id):
     return HttpResponse(std_id)
 
+def dashboardKAInfo(request,ka_id):
+
+    print('entering dashboardKAInfo');
+
+    ka_id = int(ka_id)
+    if ka_id%2 == 0:
+        even_id = ka_id;
+        odd_id = ka_id-1;
+    else:
+        odd_id = ka_id;
+        even_id = ka_id+1;
+
+    odd_post_object = khanAcademyAnswer.objects.filter(ka_id = odd_id)
+    ka_post_length_odd_id = len(odd_post_object)
+
+    #how many are question and how many are answer
+    post_odd_count = odd_post_object.values('response_type').annotate(the_count=Count('response_type'))
+    odd_count = Counter(r['response_type'] for r in post_odd_count)
+
+    post_even_object = khanAcademyAnswer.objects.filter(ka_id=even_id)
+    ka_post_length_even_id = len(post_even_object)
+
+    # how many are question and how many are answer
+    post_even_count = post_even_object.values('response_type').annotate(the_count=Count('response_type'))
+    even_count = Counter(r['response_type'] for r in post_even_object)
+
+
+
+    return JsonResponse({'ka_post_length_odd_id': ka_post_length_odd_id, 'odd_answer_count':odd_count['answer'], 'odd_question_count':odd_count['question'],
+                         'ka_post_length_even_id':ka_post_length_even_id, 'even_answer_count':even_count['answer'], 'even_question_count':even_count['question']})
+
 def getGalleryTableTD(request, act_id):
 
     #get all the users

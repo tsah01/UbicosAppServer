@@ -131,7 +131,7 @@ var badge_dict_prompt_copy = {'suggestion': 'Next time try ...',
              var display = $(this).attr('class');
              var badge_descript = $(descript);
 
-            $(descript).append("<span onclick=this.parentElement.style.display='none' class='topright'>&times</span>")
+            $(descript).append("<span onclick=this.parentElement.style.display='none' class='badge-description-close-button'>&times</span>")
 
              var img = $('<img/>', { class: display, src : 'http://'+ host_url + "/static/pics/" + display + ".png" }).css({"width":"50px","height": "80px", "margin-right": "5px", "margin-left": "5px"}).appendTo(badge_descript);
 

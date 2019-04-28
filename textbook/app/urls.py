@@ -40,6 +40,7 @@ urlpatterns = [
     url('submitKAAnswer',views.submitKAAnswer),
     url('getKAPerKAID/(?P<ka_id>[0-9]+)',views.getKAPerKAID),
     url('checkKAAnswer/(?P<ka_id>\d+)',views.checkKAAnswer),
+    url('dashboardKAInfo/(?P<ka_id>\d+)',views.dashboardKAInfo),
     #badges
     url('insertBadges',views.insertBadges),
     url('getBadges',views.getBadges),

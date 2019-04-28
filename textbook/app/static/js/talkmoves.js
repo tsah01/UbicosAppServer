@@ -20,7 +20,8 @@ var copy_tm_text_button = function(value){
             console.log(copied_text);
 
             var value = '<input value="'+ copied_text +'" id="selVal" />';
-            $(value).insertAfter($(this));
+            //$(value).insertAfter($(this));
+            $(value).insertAfter($('#ka-row-copy-button'));
             $("#selVal").select(); //select works for input //https://stackoverflow.com/questions/50941892/copy-to-clipboard-value-of-selected-option
             document.execCommand("copy");
             $('div#talkmoves-copy').find("#selVal").remove();

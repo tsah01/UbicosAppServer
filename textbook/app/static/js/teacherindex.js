@@ -189,9 +189,36 @@ var initStage = function(){
 
             //TODO: ajaxk call and get the values and replace the following texts
 
+             var ka_post_length_odd_id = '';
+             var ka_post_length_even_id = '';
+             var odd_answer_count = '';
+             var odd_question_count = '';
+             var even_answer_count = '';
+             var even_question_count = '';
+
+             $.ajax({
+                type:'GET',
+                url:'http://'+ host_url +'/dashboardKAInfo/'+activity_id, //fetches number of groups, their user list and total number of comments
+                async: false, //wait for ajax call to finish, else logged_in is null in the following if condition
+                success: function(e){
+                    ka_post_length_odd_id = e.ka_post_length_odd_id;
+                    ka_post_length_even_id = e.ka_post_length_even_id;
+                    odd_answer_count = e.odd_answer_count;
+                    odd_question_count = e.odd_question_count;
+                    even_answer_count = e.even_answer_count;
+                    even_question_count = e.even_question_count;
+                }
+            });
+
+
             //display items
-            $('.ka-projection-number-display-1').text('3');
-            $('.ka-projection-number-display-2').text('5');
+            $('.ka-projection-number-display-1').text(ka_post_length_odd_id);
+            $('.ka-projection-number-display-2').text(ka_post_length_even_id);
+            $('#post1-question-count').text(odd_question_count + ' question(s)');
+            $('#post1-answer-count').text(odd_answer_count + ' answer(s)');
+            $('#post2-question-count').text(even_question_count + ' question(s)');
+            $('#post2-answer-count').text(even_answer_count + ' answer(s)');
+
         }if(lastOpenedTool === 'gallery'){
             //alert('last opened tool was gallery');
             //hide other div except gallery
