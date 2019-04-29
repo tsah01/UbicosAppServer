@@ -806,7 +806,8 @@ def getDashboard(request):
     return render(request, 'app/dashboard.html');
 
 def insertBadges(request):
-    badge = badgeModel(badgeType = request.POST.get('badgeType'), message = request.POST.get('message'), userid = request.user)
+    badge = badgeModel(badgeType = request.POST.get('badgeType'), message = request.POST.get('message'),
+                       platform = request.POST.get('platform'), userid = request.user)
     badge.save()
 
     return HttpResponse('')
@@ -949,7 +950,7 @@ def groupAdd(request):
     #     print(usernames_array.index(username))
 
     username_groupID = ['1', '1', '2', '2', '2', '3', '3', '3', '4', '4', '4', '5', '5', '5', '6', '6', '6','7', '7',
-                        '7', '8', '8', '8', '9', '9', '10', '10', '10', '11', '11', '11']
+                        '7', '8', '8', '8', '9', '9', '9','10', '10', '10', '11', '11', '11']
 
     for i in range(len(usernames_array)):
         print (usernames_array[i], ' ----- ', username_groupID[usernames_array.index(usernames_array[i])]);

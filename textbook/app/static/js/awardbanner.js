@@ -136,22 +136,22 @@ var badge_dict_prompt_copy = {'suggestion': 'Next time try ...',
              var img = $('<img/>', { class: display, src : 'http://'+ host_url + "/static/pics/" + display + ".png" }).css({"width":"50px","height": "80px", "margin-right": "5px", "margin-left": "5px"}).appendTo(badge_descript);
 
 
-             $(descript).append("<p class = 'badge_name'>" + badge_dict[display] + "</p>");
+            $(descript).append("<p class = 'badge_name'>" + badge_dict[display] + "</p>");
 
-             $(descript).append("<p class = 'badge_descrip'>"+badge_dict_description[display]+".</p>");
-
-
-              $(descript).append("<p class = 'badge_example' style='font-style:italic;'>"+badge_dict_example[display]+".</p>");
-
-                var example_string =  "<div class='talkmoves-copy'><p class = 'badge_example' style='visibility: hidden;float: left;'>"+badge_dict_prompt_copy[display]+".</p>"+
-               "<div class='tm-row'><input class='tm-row-copy-button' type='button' name='1' value='Copy' class='bannercopy'>"+
-                "</div>"+
-                "</div>"
+            $(descript).append("<p class = 'badge_descrip'>"+badge_dict_description[display]+".</p>");
 
 
-                 $(descript).append(example_string);
-                 $(descript).css('opacity','.9');
-                 $(descript).css('color', 'black');
+            $(descript).append("<p class = 'badge_example' style='font-style:italic;'>"+badge_dict_example[display]+".</p>");
+
+//            var example_string =  "<div class='talkmoves-copy'><p class = 'badge_example' style='visibility: hidden;float: left;'>"+badge_dict_prompt_copy[display]+".</p>"+
+//           "<div class='tm-row'><input class='tm-row-copy-button' type='button' name='1' value='Copy' class='bannercopy'>"+
+//            "</div>"+
+//            "</div>"
+
+
+//            $(descript).append(example_string);
+            $(descript).css('opacity','.9');
+            $(descript).css('color', 'black');
 
 
              console.log(key);

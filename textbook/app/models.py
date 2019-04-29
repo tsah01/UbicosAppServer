@@ -60,6 +60,7 @@ class badgeModel(models.Model):
     userid = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     message = models.CharField(max_length=400)
     badgeType = models.CharField(max_length=400)
+    platform = models.CharField(max_length=10)
 
 
     def natural_key(self):

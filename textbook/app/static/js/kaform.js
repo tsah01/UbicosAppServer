@@ -166,13 +166,14 @@ var copy_ka_text_button = function(){
             console.log(copied_text);
 
             var value = '<input value="'+ copied_text +'" id="selVal" />';
-            $(value).insertAfter($(this));
+            //$(value).insertAfter($(this));
+            $(value).insertAfter($('#ka-row-copy-button'));
             $("#selVal").select(); //select works for input //https://stackoverflow.com/questions/50941892/copy-to-clipboard-value-of-selected-option
             document.execCommand("copy");
             $('div#ka-showAnsweredQues').find("#selVal").remove();
 
             //alert("Copied the text: " + copied_text);
-            showKAConfirmMsg(copied_text)
+            showKAConfirmMsg("your answer is copied!")
             enterLogIntoDatabase('attempted to use copy button', 'khan academy' , copied_text, current_pagenumber)
         }
 

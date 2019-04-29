@@ -89,7 +89,6 @@ $(function(){
                  $("#allSubmission").css('background-color', '#2DB872');
                  $("#groupSubmission").css('background-color', '#2DB872');
 
-
                  $('#gallery-group-heading').text('My Group Submissions')
 
                  //update heading for the extended view
@@ -98,6 +97,7 @@ $(function(){
                  //display upload image from here
                  $('#gallery-user-submission').show();
                  $('#add-new-gallery-post').show();
+
 
                 //steps: get group id;
                 //get the group id based on the user
@@ -562,6 +562,7 @@ function viewDiv(view, number_of_group){
 
     //clear the individual image username span text
     $("#gallery-image-user-name").remove();
+    $("#gallery-image-group-member").remove();
 
     //class means user upload - specific user will click - so we know the id
     if(view == "class"){

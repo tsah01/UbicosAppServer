@@ -36,7 +36,7 @@ function auxMethod_displayBadgePrompt(platform,index,message){
         }
 
         //insert the badge in the database
-         insertBadgeIngoinDB(message, index);
+         insertBadgeIngoinDB(message, index, platform);
          displayAllBadges();
          //getBadgesFromDB();
 
@@ -162,7 +162,7 @@ function showPrompt(message, platform){
 
 }
 
-var insertBadgeIngoinDB = function(message, badgeType){
+var insertBadgeIngoinDB = function(message, badgeType, platform){
 
     $.ajax({
             type:'POST',
@@ -170,7 +170,8 @@ var insertBadgeIngoinDB = function(message, badgeType){
             async: false,
             data:{
                 'message': message,
-                'badgeType': badgeType
+                'badgeType': badgeType,
+                'platform': platform
 
             },
             success: function(e){
