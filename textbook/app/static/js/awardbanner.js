@@ -143,18 +143,18 @@ var badge_dict_prompt_copy = {'suggestion': 'Next time try ...',
 
             $(descript).append("<p class = 'badge_example' style='font-style:italic;'>"+badge_dict_example[display]+".</p>");
 
-//            var example_string =  "<div class='talkmoves-copy'><p class = 'badge_example' style='visibility: hidden;float: left;'>"+badge_dict_prompt_copy[display]+".</p>"+
-//           "<div class='tm-row'><input class='tm-row-copy-button' type='button' name='1' value='Copy' class='bannercopy'>"+
-//            "</div>"+
-//            "</div>"
+            var example_string =  "<div class='talkmoves-copy'><p class = 'badge-template-p' style='visibility: hidden;float: left;'>"+badge_dict_prompt_copy[display]+".</p>"+
+           "<div class='tm-row'><input class='tm-row-copy-button bannercopy' type='button' name='1' value='Copy'>"+
+            "</div>"+
+            "</div>"
 
 
-//            $(descript).append(example_string);
+            $(descript).append(example_string);
             $(descript).css('opacity','.9');
             $(descript).css('color', 'black');
 
 
-             console.log(key);
+            enterLogIntoDatabase('hover', 'badge' , display, 1111)
 
 
 

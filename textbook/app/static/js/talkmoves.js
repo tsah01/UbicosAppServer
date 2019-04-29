@@ -5,11 +5,12 @@ $(function(){
 
 })
 
+//badge banner copy implementaion
 var copy_tm_text_button = function(value){
 
-     $(document).on('click','.bannercopy',function(value){
+     $(document).on('click','.tm-row-copy-button.bannercopy',function(value){
      //$('#tm-row-copy-button').click(function(value){
-        alert('i am here in the badge banner');
+
         //https://jqueryhouse.com/copy-data-to-clipboard-using-jquery/
         var copied_text = $(this).parent().siblings().text();
         console.log("talkmoves.js", copied_text)
@@ -18,7 +19,7 @@ var copy_tm_text_button = function(value){
 
         }else{
             console.log(copied_text);
-
+            //alert(copied_text)
             var value = '<input value="'+ copied_text +'" id="selVal" />';
             $(value).insertAfter($(this));
             //$(value).insertAfter($('#ka-row-copy-button'));

@@ -209,9 +209,9 @@ button {
     z-index: 1; /* Sit on top */
     padding-top: 10px; /* Location of the box */
     left: 10px;
-    top: 50px;
+    top: 90%;
     width: 90%; /* Full width */
-    height: 50%; /* Full height */
+    height: 25%; /* Full height */
     /* overflow: auto;  Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -304,6 +304,10 @@ button {
     padding: 2px 16px;
     background-color: #33cccc;
     border-radius: 50px;
+    position:fixed;
+    top:100%;
+    left:12%;
+    width:70%;
 
 
 }

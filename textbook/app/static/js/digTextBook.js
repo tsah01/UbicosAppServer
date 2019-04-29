@@ -466,7 +466,7 @@ var bindActivityButtons = function(){
                 $('.card.' + type + ' h4').text('');
 
             }else{ //divid === #day2hw
-                $('.card.' + type + ' h1').text('HomeWork Problem');
+                $('.card.' + type + ' h1').text('Homework Problem');
 
 
                 $('#homework').show();

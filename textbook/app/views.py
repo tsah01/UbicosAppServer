@@ -844,9 +844,27 @@ def getUserList(request):
 def getAllStudentInfo(request,std_id):
     return HttpResponse(std_id)
 
+def response_print(d1, d2):
+    if 'answer' in d1.values():
+        answer = d1["dcount"]
+        print("answer: "+str(d1["dcount"]));
+    else:
+        answer = 0
+        print("answer: 0");
+
+    if 'question' in d2.values():
+        question = d2["dcount"]
+        print("question: " + str(d2["dcount"]));
+    else:
+        question = 0
+        print("question: 0");
+
+    return answer, question
+
+
 def dashboardKAInfo(request,ka_id):
 
-    print('entering dashboardKAInfo');
+    print('entering dashboardKAInfo ka_id:', ka_id);
 
     ka_id = int(ka_id)
     if ka_id%2 == 0:
@@ -856,24 +874,49 @@ def dashboardKAInfo(request,ka_id):
         odd_id = ka_id;
         even_id = ka_id+1;
 
+    # post - 1
     odd_post_object = khanAcademyAnswer.objects.filter(ka_id = odd_id)
     ka_post_length_odd_id = len(odd_post_object)
+    print('hojoborolo',len(odd_post_object))
 
     #how many are question and how many are answer
-    post_odd_count = odd_post_object.values('response_type').annotate(the_count=Count('response_type'))
-    odd_count = Counter(r['response_type'] for r in post_odd_count)
+    post_odd_count = odd_post_object.values('response_type').annotate(dcount=Count('response_type'))
+    #print(post_odd_count[0]) #output in the format --> {{response type:answer, dcount:2}, {response type:question, dcount:1})
 
+    if(len(post_odd_count) == 1):
+        answer, question = response_print(post_odd_count[0], {})
+    elif (len(post_odd_count) == 2):
+        answer, question = response_print(post_odd_count[0], post_odd_count[1])
+    else:
+        answer = 0
+        question = 0
+
+    odd_answer_count = answer
+    odd_question_count = question
+
+
+    #post - 2
     post_even_object = khanAcademyAnswer.objects.filter(ka_id=even_id)
     ka_post_length_even_id = len(post_even_object)
 
     # how many are question and how many are answer
-    post_even_count = post_even_object.values('response_type').annotate(the_count=Count('response_type'))
-    even_count = Counter(r['response_type'] for r in post_even_object)
+    post_even_count = post_even_object.values('response_type').annotate(dcount=Count('response_type'))
+
+    if (len(post_even_count) == 1):
+        answer, question = response_print(post_even_count[0], {})
+    elif(len(post_even_count) == 2):
+        answer, question = response_print(post_even_count[0], post_even_count[1])
+    else:
+        answer = 0
+        question = 0
+
+    even_answer_count = answer
+    even_question_count = question
 
 
 
-    return JsonResponse({'ka_post_length_odd_id': ka_post_length_odd_id, 'odd_answer_count':odd_count['answer'], 'odd_question_count':odd_count['question'],
-                         'ka_post_length_even_id':ka_post_length_even_id, 'even_answer_count':even_count['answer'], 'even_question_count':even_count['question']})
+    return JsonResponse({'ka_post_length_odd_id': ka_post_length_odd_id, 'odd_answer_count':odd_answer_count, 'odd_question_count':odd_question_count,
+                         'ka_post_length_even_id':ka_post_length_even_id, 'even_answer_count':even_answer_count, 'even_question_count':even_question_count})
 
 def getGalleryTableTD(request, act_id):
 
