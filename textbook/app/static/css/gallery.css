@@ -209,7 +209,7 @@ button {
     z-index: 1; /* Sit on top */
     padding-top: 10px; /* Location of the box */
     left: 10px;
-    top: 90%;
+    top: 70%;
     width: 90%; /* Full width */
     height: 25%; /* Full height */
     /* overflow: auto;  Enable scroll if needed */
@@ -305,7 +305,7 @@ button {
     background-color: #33cccc;
     border-radius: 50px;
     position:fixed;
-    top:100%;
+    top:80%;
     left:12%;
     width:70%;
 
