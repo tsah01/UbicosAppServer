@@ -472,35 +472,35 @@ var bindActivityButtons = function(){
                 $('#homework').show();
 
                 //check user logged in
-                if(logged_in === 'fish' || logged_in === 'giraffe' || logged_in === 'raccoon'){
-                    $('.card.' + type + ' h4').text('Group 1');
+                if(logged_in === 'giraffe' || logged_in === 'raccoon'){
+                    $('.card.' + type + ' h4').text('Group A');
                     $('#day2group1').show();
                 }else if(logged_in === 'sheep' || logged_in === 'ant' || logged_in === 'tiger'){
-                     $('.card.' + type + ' h4').text('Group 2');
+                     $('.card.' + type + ' h4').text('Group B');
                      $('#day2group2').show();
                 }else if(logged_in === 'deer' || logged_in === 'panda' || logged_in === 'liger'){
-                     $('.card.' + type + ' h4').text('Group 3');
+                     $('.card.' + type + ' h4').text('Group C');
                      $('#day2group3').show();
                 }else if(logged_in === 'fox' || logged_in === 'hippo' || logged_in === 'alligator'){
-                     $('.card.' + type + ' h4').text('Group 4');
+                     $('.card.' + type + ' h4').text('Group D');
                      $('#day2group3').show();
                 }else if(logged_in === 'dog' || logged_in === 'dolphin' || logged_in === 'eagle'){
-                     $('.card.' + type + ' h4').text('Group 5');
+                     $('.card.' + type + ' h4').text('Group E');
                      $('#day2group3').show();
                 }else if(logged_in === 'zebra' || logged_in === 'rabbit' || logged_in === 'bear'){
-                     $('.card.' + type + ' h4').text('Group 6');
+                     $('.card.' + type + ' h4').text('Group F');
                      $('#day2group3').show();
-                }else if(logged_in === 'monkey' || logged_in === 'leaopard' || logged_in === 'frog'){
-                     $('.card.' + type + ' h4').text('Group 7');
+                }else if(logged_in === 'monkey' || logged_in === 'leopard' || logged_in === 'frog'){
+                     $('.card.' + type + ' h4').text('Group G');
                      $('#day2group3').show();
                 }else if(logged_in === 'squirrel' || logged_in === 'elephant' || logged_in === 'bee'){
-                     $('.card.' + type + ' h4').text('Group 8');
+                     $('.card.' + type + ' h4').text('Group H');
                      $('#day2group3').show();
-                }else if(logged_in === 'duck' || logged_in === 'bat'){
-                     $('.card.' + type + ' h4').text('Group 9');
+                }else if(logged_in === 'fish' || logged_in === 'bat'){
+                     $('.card.' + type + ' h4').text('Group J');
                      $('#day2group3').show();
-                }else if(logged_in === 'kangaroo' || logged_in === 'penguin' || logged_in === 'lion'){
-                     $('.card.' + type + ' h4').text('Group 10');
+                }else if(logged_in === 'kangaroo' || logged_in === 'penguin' || logged_in === 'duck'){
+                     $('.card.' + type + ' h4').text('Group I');
                      $('#day2group3').show();
                 }
 

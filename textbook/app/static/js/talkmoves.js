@@ -29,6 +29,7 @@ var copy_tm_text_button = function(value){
 
             //set to input field in chat
             //$('write-message#msg-text').val(copied_text)
+            enterLogIntoDatabase('attempted to use copy button', 'badge banner' , copied_text, current_pagenumber)
 
             //alert("Copied the text: " + copied_text);
 

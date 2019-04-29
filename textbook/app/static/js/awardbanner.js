@@ -154,7 +154,7 @@ var badge_dict_prompt_copy = {'suggestion': 'Next time try ...',
             $(descript).css('color', 'black');
 
 
-            enterLogIntoDatabase('hover', 'badge' , display, 1111)
+            enterLogIntoDatabase('badge hover', 'badge' , display, current_pagenumber)
 
 
 

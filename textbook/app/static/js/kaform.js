@@ -173,7 +173,7 @@ var copy_ka_text_button = function(){
             $('div#ka-showAnsweredQues').find("#selVal").remove();
 
             //alert("Copied the text: " + copied_text);
-            showKAConfirmMsg("your answer is copied!")
+            showKAConfirmMsg("Your answer is copied!")
             enterLogIntoDatabase('attempted to use copy button', 'khan academy' , copied_text, current_pagenumber)
         }
 

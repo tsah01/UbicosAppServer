@@ -3,7 +3,7 @@ var keyword_social = "thanks,thank you,thankyou,love it,good job,great job,great
 
 var keywords_obj = new Object();
     keywords_obj.explanation="this is because,cause,would be,but,since,for example,an example,because";
-    keywords_obj.feedback = "correct,incorrect,correct answer,incorrect answer,right answer,didnt understand,did not understand,i understand";
+    keywords_obj.feedback = "answer is wrong,correct,incorrect,correct answer,incorrect answer,right answer,wrong answer,didnt understand,did not understand,i understand";
     keywords_obj.suggestion = "i think,should,could be,try,next time try";
     keywords_obj.ques= "how,what,where,why,can you,can,did,do,does";
     keywords_obj.reflection="i agree,i disagree,confused";
@@ -40,7 +40,7 @@ function auxMethod_displayBadgePrompt(platform,index,message){
          displayAllBadges();
          //getBadgesFromDB();
 
-         enterLogIntoDatabase('display prompt', 'badge:'+index , message, current_pagenumber);
+         enterLogIntoDatabase('badge display prompt', 'badge:'+index , message, current_pagenumber);
 
 }
 
