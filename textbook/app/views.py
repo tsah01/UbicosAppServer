@@ -858,7 +858,7 @@ def dashboardKAInfo(request,ka_id):
         even_id = ka_id+1;
 
     # post - 1
-    odd_post_object = khanAcademyAnswer.objects.filter(ka_id = odd_id)
+    odd_post_object = khanAcademyAnswer.objects.filter(ka_id = odd_id).exclude(response_type='')
     ka_post_length_odd_id = len(odd_post_object)
     print('hojoborolo',len(odd_post_object))
 
@@ -884,7 +884,7 @@ def dashboardKAInfo(request,ka_id):
 
 
     #post - 2
-    post_even_object = khanAcademyAnswer.objects.filter(ka_id=even_id)
+    post_even_object = khanAcademyAnswer.objects.filter(ka_id=even_id).exclude(response_type='')
     ka_post_length_even_id = len(post_even_object)
 
     # how many are question and how many are answer
