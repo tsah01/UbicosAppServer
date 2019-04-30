@@ -844,23 +844,6 @@ def getUserList(request):
 def getAllStudentInfo(request,std_id):
     return HttpResponse(std_id)
 
-def response_print(d1, d2):
-    if 'answer' in d1.values():
-        answer = d1["dcount"]
-        print("answer: "+str(d1["dcount"]));
-    else:
-        answer = 0
-        print("answer: 0");
-
-    if 'question' in d2.values():
-        question = d2["dcount"]
-        print("question: " + str(d2["dcount"]));
-    else:
-        question = 0
-        print("question: 0");
-
-    return answer, question
-
 
 def dashboardKAInfo(request,ka_id):
 
@@ -881,15 +864,20 @@ def dashboardKAInfo(request,ka_id):
 
     #how many are question and how many are answer
     post_odd_count = odd_post_object.values('response_type').annotate(dcount=Count('response_type'))
-    #print(post_odd_count[0]) #output in the format --> {{response type:answer, dcount:2}, {response type:question, dcount:1})
+    print(post_odd_count)  #output in the format --> {{response type:answer, dcount:2}, {response type:question, dcount:1})
 
-    if(len(post_odd_count) == 1):
-        answer, question = response_print(post_odd_count[0], {})
-    elif (len(post_odd_count) == 2):
-        answer, question = response_print(post_odd_count[0], post_odd_count[1])
-    else:
-        answer = 0
-        question = 0
+    answer =  0
+    question = 0
+
+    for q in post_odd_count:
+        print(q)
+        if 'answer' in q.values():
+            answer = q["dcount"]
+        #else: answer = 0;
+
+        if 'question' in q.values():
+            question = q["dcount"]
+        #else: question = 0;
 
     odd_answer_count = answer
     odd_question_count = question
@@ -902,13 +890,18 @@ def dashboardKAInfo(request,ka_id):
     # how many are question and how many are answer
     post_even_count = post_even_object.values('response_type').annotate(dcount=Count('response_type'))
 
-    if (len(post_even_count) == 1):
-        answer, question = response_print(post_even_count[0], {})
-    elif(len(post_even_count) == 2):
-        answer, question = response_print(post_even_count[0], post_even_count[1])
-    else:
-        answer = 0
-        question = 0
+    answer = 0
+    question = 0
+
+    for q in post_even_count:
+        print(q)
+        if 'answer' in q.values():
+            answer = q["dcount"]
+        #else: answer = 0;
+
+        if 'question' in q.values():
+            question = q["dcount"]
+        #else: question = 0;
 
     even_answer_count = answer
     even_question_count = question

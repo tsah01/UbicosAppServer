@@ -1,4 +1,4 @@
-var keyword_relevance = "circle,circumference,diameter,rate of change,proportional,proportional relationship,function,linear,linear function,proportional function,linear function,non-linear function";
+var keyword_relevance = "positive,negative,circle,circumference,diameter,rate of change,proportional,proportional relationship,function,linear,linear function,proportional function,linear function,non-linear function";
 var keyword_social = "thanks,thank you,thankyou,love it,good job,great job,great";
 
 var keywords_obj = new Object();
