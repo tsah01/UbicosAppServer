@@ -403,6 +403,7 @@ var bindActivityButtons = function(){
             $('#gallery-panel').show();
             $('#single-image-view').hide();
 
+
             //https://stackoverflow.com/questions/52430558/dynamic-html-image-loading-using-javascript-and-django-templates
             $('img#default').attr('src', API_URL.picsBase + "/default.png");
             // end of the solution

@@ -6,6 +6,13 @@ var groupArray = ['A', 'B','C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K']
 var middleGroupDiscussion = 'no'
 var random_group_list = ''
 
+usernames_array_gallery = ["giraffe", "raccoon", "ant", "tiger", "sheep", "deer", "panda", "liger", "fox", "hippo", "alligator",
+                       "dog", "dolphin", "eagle", "zebra", "rabbit", "bear","monkey", "leopard", "frog", "squirrel", "elephant",
+                       "bee", "duck", "kangaroo", "penguin", "fish","bat", "lion", "AW", "user1", "user2"];
+
+username_groupID_gallery = ['A', 'A', 'B', 'B', 'B', 'C', 'C', 'C', 'D', 'D', 'D', 'E', 'E', 'E', 'F', 'F', 'F','G', 'G',
+                        'G', 'H', 'H', 'H', 'I', 'I', 'I','J', 'J', 'J', 'K', 'K', 'K']
+
 $(function(){
 
     getLoggedUserName();
@@ -97,6 +104,10 @@ $(function(){
                  //display upload image from here
                  $('#gallery-user-submission').show();
                  $('#add-new-gallery-post').show();
+
+                 //remove hanging residue from discuss
+                 $("#gallery-image-user-name").remove();
+                 $("div[id=gallery-image-group-member]").remove();
 
 
                 //steps: get group id;
@@ -564,6 +575,7 @@ function viewDiv(view, number_of_group){
     $("#gallery-image-user-name").remove();
     $("#gallery-image-group-member").remove();
 
+
     //class means user upload - specific user will click - so we know the id
     if(view == "class"){
         $('#gallery-user-submission').show();
@@ -744,7 +756,10 @@ var openImageView = function(galleryView, image){
 
     //remove previous single image before adding new one
     $('.section').children('img').remove();
-    $('.section').remove('#gallery-image-user-name');
+    $('#gallery-image-user-name').remove();
+    $('#gallery-image-group-member').remove();
+
+
 
     $('.section', singleImageViewer).append(image);
 
@@ -784,6 +799,7 @@ var openImageView = function(galleryView, image){
             });
 
 
+
       var val = $('input[name=image-index]').val() - 1
                 if(val<0)  {
                     $(".previous-image").css("opacity", ".2");
@@ -817,15 +833,17 @@ var openImageView = function(galleryView, image){
 
 
 
-
     //now add the name
     if ($('#gallery-image-user-name').length === 0) {
         // code to run if it isn't there
-        $('.section').append('<div id="gallery-image-user-name"><b>Image uploaded by Group '+ groupArray[get_user_group_id-1] + ' </b> </div>');
+        //get index using the username
+        index_postedby = usernames_array_gallery.indexOf(imagePostedBy);
+        console.log("hojoborolo", index_postedby)
+        $('.section').append('<div id="gallery-image-user-name"><b>Image uploaded by Group '+ username_groupID_gallery[index_postedby] + ' </b> </div>');
         $('.section').append('<div id="gallery-image-group-member"><b>Discussion Group: '+ random_group_list + ' </b> </div>');
 
-
-
+    }else{
+         //$('.section').append('<div id="gallery-image-group-member"><b>Discussion Group: '+ random_group_list + ' </b> </div>');
 
     }
 
