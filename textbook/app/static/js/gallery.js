@@ -853,7 +853,7 @@ var openImageView = function(galleryView, image){
         if(parseInt(activity_id) === 1 ){
             $('.gallery-instruction').html("Discuss:<br>What is the rate of change for each graph?<br>What does a rate of change on a graph mean?<br>What does it mean specifically for this graph?<br>What did we discover?");
         }else if(parseInt(activity_id) === 2 ){
-            $('.gallery-instruction').html("Discuss:<br>Are these functions proportional? How do you know?<br>Which of them are non-proportional functions?<br>What do you think makes it a function even if it’s not proportional?<br>Do you agree on a definition of a function?");
+            $('.gallery-instruction').html("Discuss:<br>Are these functions proportional? How do you know?<br>What do you think makes it a function even if it’s not proportional?<br>Do you agree on a definition of a function?");
         }
         else if(parseInt(activity_id) === 3 ){
             $('.gallery-instruction').html("Discuss:<br>Which functions were proportional and how did you know?<br>Which relationships were non-proportional functions?<br>What do you think makes it a function even if it’s not proportional?<br>Can you agree on a definition of a function?");
