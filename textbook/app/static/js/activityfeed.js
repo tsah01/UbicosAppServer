@@ -63,11 +63,11 @@ function loadActivityFeed(){
 
 
     //add event listener to the chat button click
-    $("#msg-send-btn").click(function(e){
+    $("#msg-send-btn").off().on('click', function(e){
         e.preventDefault();
         postMessage();
     });
-    $('#msg-text').keypress(function (e) {
+    $('#msg-text').off().on('keypress', function (e) {
         if (e.which == 13) {
           postMessage();
           return false;
