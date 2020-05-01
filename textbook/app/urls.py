@@ -8,6 +8,16 @@ urlpatterns = [
     url('login', views.login, name='login'),
     url('logout', auth_views.LogoutView.as_view()),
     url('index', views.index, name='index'),
+
+# My work starts from here(Tula)
+    url('teacher', views.teacher, name='teacher'),
+    url('home', views.home, name='home'),
+    url('ratio', views.ratio, name='ratio'),
+    url('volumeAndSurface', views.volumeAndSurface, name='volumeAndSurface'),
+    url('linearFunction', views.linearFunction, name='linearFunction'),
+    url('studentProfile', views.studentProfile, name='studentProfile'),
+
+
     url('getUsername', views.getUsername),
     url('getGroupID/(?P<act_id>\d+)', views.getGroupID),
     url('getUserList',views.getUserList),

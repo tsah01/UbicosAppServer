@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 import jsonfield
 
+
 # Create your models here.
 class ActivityIndex(models.Model):
     page_number = models.IntegerField()
@@ -116,3 +117,27 @@ class userLogTable(models.Model):
     input = models.CharField(max_length=200)
     pagenumber = models.IntegerField(null=True)
     posted_at = models.DateTimeField(auto_now_add=True)
+
+
+class topics(models.Model):
+    topic_name = models.CharField(max_length=20)
+    users = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    activity = models.ForeignKey(ActivityIndex, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.topic_name
+
+class modelbook(models.Model):
+    users = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    name = models.CharField(max_length=20)
+    topic = models.ForeignKey(topics, on_delete=models.CASCADE)
+    activities = models.ForeignKey(ActivityIndex, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.name
+
+
+class colorcode(models.Model):
+    users = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    #color_type = models.ColorField('#ffffff')
+    activities = models.ForeignKey(ActivityIndex, on_delete=models.CASCADE)
+

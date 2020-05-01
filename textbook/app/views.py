@@ -1,12 +1,14 @@
 
 from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
 from rest_framework.views import APIView
 from .models import imageModel, imageComment, Message, brainstormNote,userLogTable, tableChartData, \
-    userQuesAnswerTable, groupInfo, userLogTable, khanAcademyAnswer, random_group_users, badgeModel
+    userQuesAnswerTable, groupInfo, userLogTable, khanAcademyAnswer, random_group_users, badgeModel, \
+    ActivityIndex, topics, modelbook, colorcode
 from django.contrib.auth import authenticate
 from django.http.response import JsonResponse
 from django.contrib.auth import login as auth_login
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Count
@@ -92,20 +94,47 @@ def getUsername(request):
         username = request.user.get_username();
         return JsonResponse({'name': username, 'errorMsg': True})
 
+
+# My work starts from here(Tula)
 @login_required
 def index(request):
     if request.user.is_authenticated:
-        return render(request, 'app/index.html')
+        #return render(request, 'app/index.html')
         #if teacher then open up teacher portal, else student portal
-        # if request.user.get_username() == 'AW':
-        #     return render(request, 'app/teacherindex.html')
-        # else: return render(request, 'app/index.html')
+        if request.user.get_username() == 'teacher':
+            usr = userLogTable.objects.all()
+            activities = ActivityIndex.objects.all();
+            return render(request, 'app/home.html', {'usrs': usr, 'activity': activities})
+        else:
+            return render(request, 'app/index.html')
 
 
 
 # def activityList(request):
 #     activities = ActivityIndex.objects.all();
 #     return render(request, 'app/index.html',  {'activities': activities})
+
+
+
+def teacher(request):
+    return render(request, 'app/teacherindex.html')
+
+def home(request):
+    return render(request, 'app/home.html')
+
+def ratio(request):
+    return render(request, 'app/ratioProportion.html')
+
+def volumeAndSurface(request):
+    return render(request, 'app/VolumeAndSurface.html')
+
+def linearFunction(request):
+    return render(request, 'app/linearFunction.html')
+
+def studentProfile(request):
+    return render(request, 'app/studentProfile.html')
+
+
 
 def login_form(request):
     return render(request, 'app/login.html',{})
@@ -1147,6 +1176,8 @@ def createBulkUser(request):
 
 
     return HttpResponse('')
+
+
 
 # hacks - end
 
