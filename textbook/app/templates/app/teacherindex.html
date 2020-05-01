@@ -1,11 +1,43 @@
-<h1>Teacher Dashboard</h1>
+
+{% extends 'app/base.html'%}
+
+<h1> hello</h1>>
+
+{% block body%}
+    <div><h1>Teacher Dashboard</h1></div>
+
+
+
+{% endblock %}
+
+
+<!-- default/ given teacher board
+
+
+{% if user_activity %}
+        <ul>
+        {% for user in user_activity %}
+            <li><a href="/studentID/{{ user.userID }}/">{{ user.userID }}</a></li>
+            <p>Image Comments</p>
+            <p>{{ user.imagecomment}}</p>
+            loop through image comment and get all the comments-->
+            {% for uic in user.imagecomment %}
+                 <p>{{ uic.content }}</p>
+            {% endfor %}
+            <p>General Chat</p>
+            <p>{{ user.generalmessage}}</p>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No students registered in this class.</p>
+    {% endif %}
+
 
 <div id="teacher-page">
 
-
-    <!--<span onclick=this.parentElement.parentElement.style.display='none' class="topright" >&times</span>-->
+    <span onclick=this.parentElement.parentElement.style.display='none' class="topright" >&times</span>
     <span class="teacher-card-close-button" >&times</span>
-    <!--</div>-->
+
     <div class="verticalDivider">
         <div class="row-left">
             <div class="ka-projection">
@@ -32,7 +64,7 @@
         </div>
     </div>
 
-    <!--TODO Code Refactor Time: Table with two rows could be an option-->
+    TODO Code Refactor Time: Table with two rows could be an option
     <div class="gallery_middle" >
          <div class="gallery_projection">
             <div class="projection_glry_container">
@@ -69,7 +101,7 @@
 
 </div>
 
-
+End comment--->
 
 
 

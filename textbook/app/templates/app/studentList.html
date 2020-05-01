@@ -1,3 +1,6 @@
+
+{% extends 'app/base.html'%}
+{% block title %} Student Information {% endblock %}
 <!--{% if user_list %}-->
     <!--<ul>-->
     <!--{% for user in user_list %}-->
@@ -7,21 +10,71 @@
 <!--{% else %}-->
     <!--<p>No students registered in this class.</p>-->
 <!--{% endif %}-->
+{% block body %}
+    <div><h1>Student Information</h1></div>
+    <p><b>userLogTable</b></p>
+    <!---{% if object.username != None and object.username != '' %}{{object.content}}
+        {% else%} user are not registerd yet
+        {% endif %}
+    --->
 
-{% if user_activity %}
-    <ul>
-    {% for user in user_activity %}
-        <li><a href="/studentID/{{ user.userID }}/">{{ user.userID }}</a></li>
-        <p>Image Comments</p>
-        <!--<p>{{ user.imagecomment}}</p>-->
-        <!--loop through image comment and get all the comments-->
-        {% for uic in user.imagecomment %}
-             <p>{{ uic.content }}</p>
+    <div>
+
+        <table>
+          <tr>
+              <th>username</th>
+              <th>action</th>
+              <th>type</th>
+              <th>input</th>
+              <th>pagenumber</th>
+              <th>posted_at</th>
+          </tr>
+          <tr>
+              <td>object.username</td>
+              <td>object.action</td>
+              <td>object.type</td>
+              <td>object.input</td>
+              <td>object.pagenumber</td>
+              <td>object.posted_at</td>
+          </tr>
+          <tr>
+              <td>object.username</td>
+              <td>object.action</td>
+              <td>object.type</td>
+              <td>object.input</td>
+              <td>object.pagenumber</td>
+              <td>object.posted_at</td>
+          </tr>
+            <tr>
+              <td>object.username</td>
+              <td>object.action</td>
+              <td>object.type</td>
+              <td>object.input</td>
+              <td>object.pagenumber</td>
+              <td>object.posted_at</td>
+          </tr>
+
+        </table>
+    </div>
+{% endblock %}
+<!---
+
+    {% if user_activity %}
+        <ul>
+        {% for user in user_activity %}
+            <li><a href="/studentID/{{ user.userID }}/">{{ user.userID }}</a></li>
+            <p>Image Comments</p>
+            <!--<p>{{ user.imagecomment}}</p>-->
+            <!--loop through image comment and get all the comments-->
+            {% for uic in user.imagecomment %}
+                 <p>{{ uic.content }}</p>
+            {% endfor %}
+            <p>General Chat</p>
+            <p>{{ user.generalmessage}}</p>
         {% endfor %}
-        <p>General Chat</p>
-        <p>{{ user.generalmessage}}</p>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No students registered in this class.</p>
-{% endif %}
+        </ul>
+    {% else %}
+        <p>No students registered in this class.</p>
+    {% endif %}
+
+--->

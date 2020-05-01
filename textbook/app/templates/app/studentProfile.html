@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}TeacherDashBoard {% endblock %}</title>
+    	<link rel="stylesheet" href="style.css">	<!-- linking my css style sheet -->
+		<script src="jquery-3.3.1.min.js"></script>
+		<meta charset="UTF-8"> <!-- for characters types -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> <!-- linking the css libraries -->
+
+</head>
+
+<style>
+*{
+	box-sizing: border-box;
+}
+@media screen and (orientation: portrait) {
+     { width: 100vw; }
+}
+.flex-container{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+    align-items: center;
+}
+
+/* css for whole header */
+.header{
+	/*background: gold;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: wrap;/*wrap into next line*/
+	height: 75px;
+    text-align: center;
+	margin: 20px;
+
+}
+
+/* css for image which in a first child of header class */
+ .header > img {
+	width:150px;
+	height:150px;
+	border-radius: 50%;
+	padding: 10px;
+
+}
+/* css for images which are inside of header class, and inside of div element */
+.header div img{
+	width:150px;
+	height:150px;
+	border-radius: 50%;
+	padding: 10px;
+}
+/* css for my wesite link which is inside of header class */
+ .header a {
+	  /*color: purple;*/
+	  font-size:auto;
+	  font-family: arial, sans-serif;
+	  /*font-family:Stencil Std, fantasy; */
+	  font-style: italic;
+	  text-decoration: none;
+	  padding: 10px;
+}
+/* css for a link when hover a cursor on it */
+.header a:hover:not(.active) {
+  	color: blue;
+}
+.circle {
+	  height: 75px;
+	  width: 75px;
+	  /*background-color: blue;*/
+	  border-style: double;
+	  border-color: blue;
+	  border-radius: 50%;
+	  display: inline-block;
+}
+
+/* css for navigation pane */
+.dashboard{
+		background: #1abc9c;
+		text-align: center;
+		font-size:150%;
+		font-style: italic;
+		overflow: hidden;
+		height: 75px;
+		width: 100%
+		display: flex;
+		justify-content: space-between;
+		align-items: left;
+		flex: wrap;/*wrap into next line*/
+		margin-top: 20px;
+		margin-left: 20px;
+		margin-right: 20px;
+		margin-bottom: 0px;
+
+}
+.dashboard p{
+		text-align: center;
+		margin: 20px
+}
+
+/* CSS for the Topic*/
+.Topic{
+	margin: 20px;
+	border-radius: 5px;
+	border-style: double;
+	/*background: yellow;*/
+	border-color: #4CAFF0;
+	border-width:5px;
+}
+.navigation{
+	background-color: white;
+	text-align: center;
+	font-size:100%;
+	font-style: italic;
+	overflow: hidden;
+	height: auto;
+	width: auto;
+	margin-top: 0px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+
+	padding-top: 0px;
+}
+ul {
+	 list-style-type: none;
+ 	 margin:0;
+ 	 padding:0 ;
+ 	 background-color: #f1f1f1;
+ 	 height:auto;
+
+}
+
+li {
+  	display: inline;
+}
+
+li a {
+  	color: #000;
+  	padding: 8px 50px;
+ 	 text-decoration: none;
+}
+
+li a.active {
+  	background-color: green;
+  	color: white;
+}
+
+li a:hover:not(.active) {
+ 	 background-color:green;
+  	color: white;
+}
+
+h1{
+	font-size:25px;
+	color:purple;
+  	font-style: italic;
+	margin:5px
+}
+h2{
+	color:red;
+	font-size:30px;
+  	font-style: italic;
+	margin:10px;
+	text-align: center;
+}
+.Information{
+
+  	float: right;
+}
+
+/* css for Table */
+table {
+  	font-family: arial, sans-serif;
+  	width: 100%;
+  	/*border-style: double;*/
+  	border-color: #4CAFF0;
+ 	 border-width: 20px;
+ 	 align: center;
+}
+
+td, th {
+  	border: 1px solid #dddddd;
+  	text-align: center;
+ 	 padding: 8px;
+}
+
+tr:nth-child(even) {
+  	background-color: #dddddd;
+}
+.btn {
+  	border: none; /* Remove borders */
+ 	color: white; /* Add a text color */
+  	padding: 10px 10px; /* Add some padding */
+ 	 cursor: pointer; /* Add a pointer cursor on mouse-over */
+ 	 border-radius: 5px;
+}
+
+.success {background-color: #4CAF50;} /* Green */
+.success:hover {background-color: #46a049;}
+
+.warning {background-color: #ff9800;} /* Orange */
+.warning:hover {background: #e68a00;}
+
+.danger {background-color: #f44336;} /* Red */
+.danger:hover {background: #da190b;}
+
+.activity {background-color: gray;} /* gray */
+.activity:hover {background: ;}
+
+.content{
+	display: none;
+	height: 100px;
+	width:100px;
+	margin: 20px;
+	color:black;
+}
+.body {
+  background-color: powderblue;
+  margin: 20px;
+  padding: 160px;
+  text-align: center;
+	border-style: groove;
+    border-radius: 5px;
+}
+</style>
+
+<!-- creating DashBoard area  -->
+<div class="dashboard">
+
+	<p> <b> Student Information <b></p>
+
+</div> <!-- closing  DashBoard area  -->
+
+<!-- creating a navigation bar -->
+<div class="navigation">
+	<ul>
+		<li><a href="{% url 'home'%}"><b>Home<b></a></li>
+		<li><a href="{% url 'ratio' %}"><b>Ratio and Proportion<b></a></li>
+		<li><a href="{% url 'volumeAndSurface' %}"><b><b>Volume and Surface</a></li>
+		<li><a href="{% url 'linearFunction' %}"><b>Linear Function<b></a></li>
+	</ul>
+</div> <!-- closing a navigation bar -->
+
+
+<div class="Topic">
+
+		<div class= "Information">
+			<tr><th><img class="student" source="" alt="student image"><br> student name: Ant
+		</div>
+
+<TABLE  frame="hsides" rules="groups"
+			  summary="displaying all the ration and proportion activities
+			  			across the platform across the ctivities">
+
+		<h1><b>Topic: Ratio and Proportion <b></h1>
+
+			<TH> Activities
+			<TH> Page Number
+			<TH>Coments
+			<TH># coments
+			<TH>Badge Earned
+			<TH> Status
+
+
+
+			<TR><TD>Enter the number for radius and circumference?
+				<TD>1
+				<TD>1, 3
+				<TD>2
+				<TD> Relevant
+				<TD> completed
+			<TR><TD>Create PPP WB and upload into WB
+				<TD>
+				<TD>
+				<TD>
+				<TD>
+				<TD>
+			<TR><TD>Calculate conical cups of punch
+				<TD>
+				<TD>
+				<TD>
+				<TD>
+				<TD>
+			<TR><TD> Calculate spherical cups of punch
+				<TD>
+				<TD>
+				<TD>
+				<TD>
+				<TD>
+
+
+	</TABLE>
+
+</div> <!-- creating Activities displaying area area  -->
+<h2 style="font-color:red"> Note: will display all students information similar to this page !!!</h2>
+
+</html>
